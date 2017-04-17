@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/richin13/tidylabs.svg?branch=master)](https://travis-ci.org/richin13/tidylabs)
+
 # README
 
 This README would normally document whatever steps are necessary to get the
