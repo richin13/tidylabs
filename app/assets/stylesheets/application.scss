@@ -10,6 +10,17 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+$brand-primary: #005da4;
+$brand-success: #6dc067;
+$brand-info: #00c0f3;
+$brand-warning: #ffe06a;
+$brand-danger: #f37021;
+
+// Links
+$link-color: $brand-info;
+$link-hover-color: $brand-primary;
+$link-hover-decoration: none;
+
+@import "bootstrap";
