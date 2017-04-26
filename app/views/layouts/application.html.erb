@@ -20,11 +20,11 @@
           <span class="icon-bar"></span>
         </button>
         <a href="https://www.ucr.ac.cr/" class="navbar-brand" style="height: auto;">
-          <img src="img/firma-horizontal-dos-lineas-cmky.better.png"/>
+          <%= image_tag 'logo.png' %>
         </a>
       </div>
-      <p class="navbar-text navbar-right hidden-xs" style="padding: 30px 15px;">
-        Signed in as <a href="#" class="navbar-link">Ruth Fallas</a>
+      <p class="navbar-text navbar-right hidden-xs">
+        <%= image_tag 'belt.png' %>
       </p>
       <!--/.navbar-collapse -->
     </div>
@@ -32,6 +32,10 @@
   <%# TODO: Add user_signed_in? check %>
   <%= render 'layouts/common/navbar' %>
 </nav>
-<%= yield %>
+<div id="main-container" class="container">
+  <div class="col-xs-12">
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>

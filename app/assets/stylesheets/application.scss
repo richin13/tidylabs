@@ -24,3 +24,75 @@ $link-hover-color: $brand-primary;
 $link-hover-decoration: none;
 
 @import "bootstrap";
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  padding-top: 190px;
+  padding-bottom: 20px;
+}
+
+.btn {
+  vertical-align: baseline;
+  color: #000;
+  transition: background .1s ease-in;
+}
+
+.btn:hover {
+  color: #000;
+}
+
+/* Navbar */
+
+.navbar-main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-main nav {
+  border-radius: 0;
+  margin: 0 !important;
+}
+
+.navbar-banner {
+  background: #fff;
+  min-height: 108px;
+  max-height: 108px;
+}
+
+.navbar-ucr .navbar-nav > li > a {
+  padding-bottom: 11px;
+  border-bottom: 4px solid transparent;
+  transition: border-bottom .1s ease-in;
+}
+
+.navbar-ucr .navbar-nav > li > a:hover {
+  background: transparent;
+  border-bottom: 4px solid #005da4;
+}
+
+/* Content */
+
+#main-container {
+  flex: 1;
+}
+
+/* Utils */
+
+.bordered {
+  border: solid 1px black
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
