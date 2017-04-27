@@ -12,18 +12,25 @@
  *
  */
 
-$brand-primary: #005da4;
-$brand-success: #6dc067;
-$brand-info: #00c0f3;
-$brand-warning: #ffe06a;
-$brand-danger: #f37021;
+$blue-ucr: #005da4;
+$green-ucr: #6dc067;
+$light-blue-ucr: #00c0f3;
+$yellow-ucr: #ffe06a;
+$orange-ucr: #f37021;
+
+$brand-primary: $blue-ucr;
+$brand-success: $green-ucr;
+$brand-info: $light-blue-ucr;
+$brand-warning: $yellow-ucr;
+$brand-danger: $orange-ucr;
 
 // Links
-$link-color: $brand-info;
-$link-hover-color: $brand-primary;
+$link-color: $light-blue-ucr;
+$link-hover-color: $blue-ucr;
 $link-hover-decoration: none;
 
 @import "bootstrap";
+@import "utils";
 
 body {
   display: flex;
@@ -66,33 +73,28 @@ body {
   max-height: 108px;
 }
 
-.navbar-ucr .navbar-nav > li > a {
-  padding-bottom: 11px;
-  border-bottom: 4px solid transparent;
-  transition: border-bottom .1s ease-in;
+.navbar-ucr .navbar-nav > li > a:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 0 solid transparent;
+  transition: all .15s ease-in;
 }
 
 .navbar-ucr .navbar-nav > li > a:hover {
-  background: transparent;
-  border-bottom: 4px solid #005da4;
+  background: none;
+}
+
+.navbar-ucr .navbar-nav > li > a:hover:before {
+  //border-left: 2px solid transparent;
+  border-bottom: 10px solid $blue-ucr;
+  //border-right: 2px solid transparent;
 }
 
 /* Content */
 
 #main-container {
   flex: 1;
-}
-
-/* Utils */
-
-.bordered {
-  border: solid 1px black
-}
-
-.float-left {
-  float: left;
-}
-
-.float-right {
-  float: right;
 }
