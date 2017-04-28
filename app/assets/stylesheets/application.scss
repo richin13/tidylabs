@@ -1,0 +1,100 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+$blue-ucr: #005da4;
+$green-ucr: #6dc067;
+$light-blue-ucr: #00c0f3;
+$yellow-ucr: #ffe06a;
+$orange-ucr: #f37021;
+
+$brand-primary: $blue-ucr;
+$brand-success: $green-ucr;
+$brand-info: $light-blue-ucr;
+$brand-warning: $yellow-ucr;
+$brand-danger: $orange-ucr;
+
+// Links
+$link-color: $light-blue-ucr;
+$link-hover-color: $blue-ucr;
+$link-hover-decoration: none;
+
+@import "bootstrap";
+@import "utils";
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  padding-top: 190px;
+  padding-bottom: 20px;
+}
+
+.btn {
+  vertical-align: baseline;
+  color: #000;
+  transition: background .1s ease-in;
+}
+
+.btn:hover {
+  color: #000;
+}
+
+/* Navbar */
+
+.navbar-main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-main nav {
+  border-radius: 0;
+  margin: 0 !important;
+}
+
+.navbar-banner {
+  background: #fff;
+  min-height: 108px;
+  max-height: 108px;
+}
+
+.navbar-ucr .navbar-nav > li > a:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: 100%;
+  background: $blue-ucr;
+  transform: scaleX(0);
+  transition: all .15s ease-in;
+}
+
+.navbar-ucr .navbar-nav > li > a:hover {
+  background: none;
+}
+
+.navbar-ucr .navbar-nav > li > a:hover:before {
+  transform: scaleX(1);
+}
+
+/* Content */
+
+#main-container {
+  flex: 1;
+}
