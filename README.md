@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/richin13/tidylabs.svg?branch=master)](https://travis-ci.org/richin13/tidylabs)
+[![Build Status](https://travis-ci.org/richin13/tydilabs.svg?branch=dev)](https://travis-ci.org/richin13/tydilabs)
 
 # README
 
