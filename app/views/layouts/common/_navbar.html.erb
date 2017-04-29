@@ -23,8 +23,21 @@
         <li><a href="#">Medio</a></li>
         <li><a href="#">Final</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right" style="padding-top: 15px">
-        Signed in as <a href="#" class="navbar-link">Ruth Fallas</a>
+      <ul class="nav navbar-nav navbar-right" style="padding-top: 15px; display: inline">
+        Bienvenida,
+        <span class="dropdown">
+          <a class="dropdown-toggle pointer" data-toggle="dropdown">
+            <%= current_user.to_s %><span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li><%= link_to('Cerrar sesión', destroy_user_session_path, method: :delete, class: 'logout') %></li>
+          </ul>
+        </span>
       </ul>
     </div>
   </div>
