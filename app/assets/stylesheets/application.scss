@@ -108,7 +108,16 @@ body {
 }
 
 .footer img {
+  @extend .pointer;
   margin: 0;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  transition: filter .25s ease-in-out;
+}
+
+.footer img:hover {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
 }
 
 .extra-links a {
