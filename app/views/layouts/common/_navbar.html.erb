@@ -1,18 +1,35 @@
-<nav class="navbar navbar-ucr">
-  <div class="container">
-    <div class="collapse navbar-collapse" id="navbar">
+<nav class="navbar navbar-default navbar-ucr">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to(root_url, class: 'navbar-brand') do %>
+          <%= image_tag 'belt.png'%>
+      <% end %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
         <li><a href="#">Inicio</a></li>
         <li><a href="#">Medio</a></li>
         <li><a href="#">Medio</a></li>
-        <li><a href="#">Medio</a></li>
-        <li><a href="#">Medio</a></li>
-        <li><a href="#">Medio</a></li>
-        <li><a href="#">Medio</a></li>
-        <li><a href="#">Final</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right" style="padding-top: 15px">
-        Signed in as <a href="#" class="navbar-link">Ruth Fallas</a>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Ruth Fallas <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Inicio</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Cerrar sesion</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

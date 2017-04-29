@@ -1,41 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Tydilabs</title>
-  <%= csrf_meta_tags %>
+  <head>
+    <title>Tydilabs</title>
+    <%= csrf_meta_tags %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<body>
-<nav class="navbar navbar-main">
-  <nav class="navbar navbar-banner">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="https://www.ucr.ac.cr/" class="navbar-brand" style="height: auto;">
-          <%= image_tag 'logo.png' %>
-        </a>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'layouts/common/navbar' %>
+
+    <div class="container" id="main-container" >
+      <div class="col-md-12">
+        <%= yield %>
       </div>
-      <p class="navbar-text navbar-right hidden-xs">
-        <%= image_tag 'belt.png' %>
-      </p>
-      <!--/.navbar-collapse -->
     </div>
-  </nav>
-  <%# TODO: Add user_signed_in? check %>
-  <%= render 'layouts/common/navbar' %>
-</nav>
-<div id="main-container" class="container">
-  <div class="col-xs-12">
-    <%= yield %>
-  </div>
-</div>
-</body>
+    
+  </body>
 </html>

@@ -23,14 +23,13 @@ $link-color: $brand-info;
 $link-hover-color: $brand-primary;
 $link-hover-decoration: none;
 
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  padding-top: 190px;
-  padding-bottom: 20px;
 }
 
 .btn {
@@ -43,31 +42,11 @@ body {
   color: #000;
 }
 
-/* Navbar */
-
-.navbar-main {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: auto;
-  border-radius: 0;
-  border-bottom: 1px solid #eee;
-}
-
-.navbar-main nav {
-  border-radius: 0;
-  margin: 0 !important;
-}
-
-.navbar-banner {
-  background: #fff;
-  min-height: 108px;
-  max-height: 108px;
+.navbar-ucr {
+  background: white;
 }
 
 .navbar-ucr .navbar-nav > li > a {
-  padding-bottom: 11px;
   border-bottom: 4px solid transparent;
   transition: border-bottom .1s ease-in;
 }
@@ -75,6 +54,15 @@ body {
 .navbar-ucr .navbar-nav > li > a:hover {
   background: transparent;
   border-bottom: 4px solid #005da4;
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand > img {
+  height: 100%;
+  padding: 1px 14px;
+  width: auto;
 }
 
 /* Content */
