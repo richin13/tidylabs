@@ -30,14 +30,17 @@
     </div>
   </nav>
   <%# TODO: Add user_signed_in? check %>
-  <%= render 'layouts/common/navbar' %>
+  <% if user_signed_in? %>
+      <%= render 'layouts/common/navbar' %>
+  <% end %>
 </nav>
 <div id="main-container" class="container">
   <div class="col-xs-12">
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   </div>
 </div>
+<% unless user_signed_in? %>
+    <%= render 'layouts/common/footer' %>
+<% end %>
 </body>
 </html>

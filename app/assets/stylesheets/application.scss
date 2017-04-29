@@ -29,6 +29,7 @@ $link-color: $light-blue-ucr;
 $link-hover-color: $blue-ucr;
 $link-hover-decoration: none;
 
+@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "utils";
 
@@ -97,4 +98,31 @@ body {
 
 #main-container {
   flex: 1;
+}
+
+/* Footer */
+
+.footer {
+  margin-top: 25px;
+  margin-bottom: -20px;
+  text-align: center;
+  width: 100%;
+  height: 160px;
+  line-height: 60px;
+  background: image-url('horizon.png') no-repeat center top;
+}
+
+.footer img {
+  margin-top: 25px;
+  width: 200px;
+  height: auto;
+}
+
+.extra-links a {
+  margin:0;
+  padding: 0 4px;
+}
+
+a.logout {
+  color: $alert-danger-text !important;
 }
