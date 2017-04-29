@@ -13,3 +13,21 @@ a {
 .float-right {
   float: right;
 }
+
+.alert-alert {
+  @extend .alert-warning
+}
+
+.alert-notice {
+  @extend .alert-info
+}
+
+/* To simulate a link */
+.pointer {
+  cursor: pointer;
+}
+
+/* To remove the ugly background in opened dropdowns */
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background: transparent !important;
+}

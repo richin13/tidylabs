@@ -39,6 +39,7 @@
     <%= yield %>
   </div>
 </div>
+<%= render 'layouts/common/messages' %>
 <% unless user_signed_in? %>
     <%= render 'layouts/common/footer' %>
 <% end %>
