@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503055658) do
+ActiveRecord::Schema.define(version: 20170503151001) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(version: 20170503055658) do
     t.index ["asset_category_id"], name: "index_assets_on_asset_category_id"
   end
 
+  create_table "assets_revisions", id: false, force: :cascade do |t|
+    t.integer "asset_id",    null: false
+    t.integer "revision_id", null: false
+    t.index ["asset_id", "revision_id"], name: "index_assets_revisions_on_asset_id_and_revision_id"
+    t.index ["revision_id", "asset_id"], name: "index_assets_revisions_on_revision_id_and_asset_id"
+  end
+
   create_table "identification_codes", force: :cascade do |t|
     t.string   "code"
     t.string   "type"
@@ -63,6 +70,29 @@ ActiveRecord::Schema.define(version: 20170503055658) do
     t.index ["asset_id"], name: "index_identification_codes_on_asset_id"
   end
 
+  create_table "loans", force: :cascade do |t|
+    t.string   "applicant_name"
+    t.string   "applicant_dni"
+    t.string   "phone_number"
+    t.date     "return_date"
+    t.string   "observations"
+    t.integer  "asset_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["asset_id"], name: "index_loans_on_asset_id"
+  end
+
+  create_table "network_details", force: :cascade do |t|
+    t.string   "ip"
+    t.string   "mask"
+    t.string   "gateway"
+    t.string   "dns"
+    t.integer  "asset_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_id"], name: "index_network_details_on_asset_id"
+  end
+
   create_table "relocations", force: :cascade do |t|
     t.text     "reason"
     t.integer  "asset_id"
@@ -71,6 +101,41 @@ ActiveRecord::Schema.define(version: 20170503055658) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["asset_id"], name: "index_relocations_on_asset_id"
+  end
+
+  create_table "revisions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "security_details", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password"
+    t.integer  "asset_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_id"], name: "index_security_details_on_asset_id"
+  end
+
+  create_table "support_tickets", force: :cascade do |t|
+    t.string   "description"
+    t.integer  "status"
+    t.integer  "asset_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["asset_id"], name: "index_support_tickets_on_asset_id"
+  end
+
+  create_table "technical_details", force: :cascade do |t|
+    t.string   "cpu"
+    t.integer  "ram"
+    t.integer  "hdd"
+    t.string   "os"
+    t.string   "other"
+    t.integer  "asset_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_id"], name: "index_technical_details_on_asset_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,6 +151,7 @@ ActiveRecord::Schema.define(version: 20170503055658) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "pin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
