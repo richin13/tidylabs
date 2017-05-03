@@ -1,0 +1,18 @@
+class Asset < ApplicationRecord
+  has_one  :identification_code
+  has_one  :warranty
+
+  has_many :relocations
+
+  belongs_to :area
+  belongs_to :asset_category
+
+  scope :plated, -> { where(type: 'PlatedAsset') }
+  scope :unplated, -> { where(type: 'UnplatedAsset') }
+
+  validates_presence_of :serial_number, :description, :status
+  
+  # Keep in mind that if the array order changes the mapping of 
+  # db integer values changes too. Order must be maintained.
+  enum status: [ :service, :loan, :retired, :maintenance, :unassigned ]
+end

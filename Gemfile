@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'simple_form', '~> 3.4'
 gem 'jquery-rails'
+gem 'paperclip'
 
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
