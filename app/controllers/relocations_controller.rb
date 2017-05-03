@@ -1,0 +1,2 @@
+class RelocationsController < ApplicationController
+end

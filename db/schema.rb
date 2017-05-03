@@ -10,7 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428221833) do
+ActiveRecord::Schema.define(version: 20170503055658) do
+
+  create_table "areas", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  create_table "asset_categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "common_details"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "assets", force: :cascade do |t|
+    t.integer  "serial_number"
+    t.text     "description"
+    t.integer  "plate_number"
+    t.integer  "quantity"
+    t.integer  "status"
+    t.string   "type"
+    t.integer  "area_id"
+    t.integer  "asset_category_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.index ["area_id"], name: "index_assets_on_area_id"
+    t.index ["asset_category_id"], name: "index_assets_on_asset_category_id"
+  end
+
+  create_table "identification_codes", force: :cascade do |t|
+    t.string   "code"
+    t.string   "type"
+    t.integer  "asset_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["asset_id"], name: "index_identification_codes_on_asset_id"
+  end
+
+  create_table "relocations", force: :cascade do |t|
+    t.text     "reason"
+    t.integer  "asset_id"
+    t.integer  "from_area_id"
+    t.integer  "to_area_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["asset_id"], name: "index_relocations_on_asset_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -27,6 +88,17 @@ ActiveRecord::Schema.define(version: 20170428221833) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "warranties", force: :cascade do |t|
+    t.date     "purchase_date"
+    t.integer  "month_period"
+    t.string   "agent_name"
+    t.string   "agent_phone"
+    t.integer  "asset_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["asset_id"], name: "index_warranties_on_asset_id"
   end
 
 end

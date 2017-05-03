@@ -1,0 +1,2 @@
+module RelocationsHelper
+end
