@@ -13,9 +13,10 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
+gem 'jquery-rails'
+gem 'font-awesome-rails'
 
 gem 'simple_form', '~> 3.4'
-gem 'jquery-rails'
 gem 'paperclip'
 
 gem 'turbolinks', '~> 5'
