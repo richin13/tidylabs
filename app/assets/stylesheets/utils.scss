@@ -15,11 +15,11 @@ a {
 }
 
 .alert-alert {
-  @extend .alert-warning
+  @extend .alert-warning !optional;
 }
 
 .alert-notice {
-  @extend .alert-info
+  @extend .alert-info !optional;
 }
 
 /* To simulate a link */
