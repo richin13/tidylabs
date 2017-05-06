@@ -14,5 +14,4 @@ Rails.application.routes.draw do
     resources :identification_codes, shallow: true
     resources :relocations
   end
-
 end

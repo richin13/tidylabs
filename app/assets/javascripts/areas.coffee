@@ -1,3 +1,23 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+options = valueNames: [
+  'plate'
+  'category'
+  'type'
+]
+
+assetList = new List('asset-list', options)
+
+$('#asset-list-search').keyup ->
+  assetList.search $(this).val()
+
+$('#plated-filter').change ->
+  applyFilter 'placa' if @checked
+
+$('#unplated-filter').change ->
+  applyFilter 'sin placa' if @checked
+
+$('#reset-filter').change ->
+  assetList.filter()
+
+applyFilter = (type) ->
+  assetList.filter (item) ->
+    return item.values().type.toLowerCase().trim() == type
