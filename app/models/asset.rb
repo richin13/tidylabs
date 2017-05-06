@@ -18,6 +18,8 @@ class Asset < ApplicationRecord
   # db integer values changes too. Order must be maintained.
   enum status: [:service, :loan, :retired, :maintenance, :unassigned]
 
+  alias_attribute :category, :asset_category
+
   def types
     { PlatedAsset: 'placa', UnplatedAsset: 'sin placa' }
   end
