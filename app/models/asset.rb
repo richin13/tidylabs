@@ -17,4 +17,12 @@ class Asset < ApplicationRecord
   # Keep in mind that if the array order changes the mapping of 
   # db integer values changes too. Order must be maintained.
   enum status: [:service, :loan, :retired, :maintenance, :unassigned]
+
+  def types
+    { PlatedAsset: 'placa', UnplatedAsset: 'sin placa' }
+  end
+
+  def type_to_h
+    types.fetch(type.to_sym)
+  end
 end

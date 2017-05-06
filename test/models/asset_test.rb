@@ -10,4 +10,12 @@ class AssetTest < ActiveSupport::TestCase
     asset = UnplatedAsset.new
     assert asset.invalid?
   end
+
+  test "asset type to human should return correct translation" do
+    plated_asset = PlatedAsset.new
+    unplat_asset = UnplatedAsset.new
+
+    assert_equal 'placa', plated_asset.type_to_h
+    assert_equal 'sin placa', unplat_asset.type_to_h
+  end
 end
