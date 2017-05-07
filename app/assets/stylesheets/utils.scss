@@ -31,3 +31,14 @@ a {
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
   background: transparent !important;
 }
+
+.center-block {
+  @extend .center-block;
+  float: none;
+}
+
+label {
+  abbr {
+    display: none;
+  }
+}
