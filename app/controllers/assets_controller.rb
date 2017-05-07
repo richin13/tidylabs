@@ -1,4 +1,5 @@
 class AssetsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_asset, :except => [:new, :create, :index]
 
   def index
@@ -20,6 +21,7 @@ class AssetsController < ApplicationController
 
     if @asset.save
       # Maybe generate qr here?
+      @asset.generate_id_code
       redirect_to asset_url(@asset), notice: 'Activo creado correctamente'
     else
       render :new

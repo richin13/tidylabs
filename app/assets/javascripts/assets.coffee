@@ -1,13 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 class AssetCreationManager
   defaultsTypeaheadManager =
-    url: undefined
+    url: ''
     wildcard: '%QUERY'
     prefetch: true
-    name: undefined
+    name: ''
     display: 'name'
     onSelect: ->
 
@@ -38,35 +34,8 @@ class AssetCreationManager
     toggleTrigger.change(proc)
     proc()
 
-  registerTypeahead: (inputSelector) ->
-    # Hard-coded version
-    areas = [{id: 1, name: 'Laboratorio 6'},
-      {id: 2, name: 'Laboratorio 7'},
-      {id: 3, name: 'Laboratorio 16'},
-      {id: 4, name: 'Dirección'},
-      {id: 5, name: 'Diseño'}]
-    areas = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: areas
-    })
-
-    inputSelector.typeahead({
-      hint: true,
-      hightlight: true,
-      minLength: 3
-    }, {
-      name: 'areas',
-      display: 'name',
-      source: areas
-    })
-      .bind('typeahead:select', (ev, s) ->
-        $('#asset_area_id').val(s.id)
-    )
-
-  registerTypeaheadAPI: (inputSelector, options) ->
-    options = _.defaults {}, _.clone(options), this.defaultsTypeaheadManager
-
+  registerTypeaheadAPI: (inputSelector, _options) ->
+    options = _.defaults({}, _.clone(_options), defaultsTypeaheadManager)
     bloodhoundOptions =
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace(options.display)
       queryTokenizer: Bloodhound.tokenizers.whitespace
@@ -93,7 +62,6 @@ class AssetCreationManager
 
 
 ready = () ->
-  console.log 'Ready...'
   $('.selectpicker').selectpicker() # Init bootstrap-select
   $('input[type="checkbox"].toggle').bootstrapToggle({
     on: 'Sí',
@@ -108,7 +76,24 @@ ready = () ->
   mgr.registerCollapse $('#security-details-toggle'), $('.security-details-wrapper')
   mgr.registerCollapse $('#network-details-toggle'), $('.network-details-wrapper')
 
-  mgr.registerTypeahead $ '#area_typeahead.typeahead'
+  mgr.registerTypeaheadAPI $('#area_typeahead.typeahead'), {
+    url: '/areas.json'
+    prefetch: true
+    name: 'areas'
+    display: 'name'
+    onSelect: (ev, s) ->
+      $('#asset_area_id').val(s.id)
+  }
+  mgr.registerTypeaheadAPI $('#category_typeahead.typeahead'), {
+    url: '/categories.json'
+    prefetch: true
+    name: 'categories'
+    display: 'name'
+    onSelect: (ev, s) ->
+      $('#asset_category_id').val(s.id)
+  }
+
+  true
 
 
 $(document).ready ready

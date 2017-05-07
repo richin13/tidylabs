@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'categories/index'
+
   root 'defaults#index'
 
   devise_for :users, skip: [:sessions]
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :areas
+  resources :categories
   resources :assets do
     resources :warranties, shallow: true
     resources :identification_codes, shallow: true

@@ -1,9 +1,14 @@
 class AreasController < ApplicationController
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
   before_action :find_area, only: [:show, :edit, :update]
 
   def index
     @areas = Area.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @areas } # TODO: Improve JSON structure
+    end
   end
 
   def new
@@ -33,14 +38,14 @@ class AreasController < ApplicationController
     else
       redirect_to :edit
     end
-  end 
+  end
 
   private
-    def area_params
-      params.require(:area).permit(:name, :description, :photo)
-    end
+  def area_params
+    params.require(:area).permit(:name, :description, :photo)
+  end
 
-    def find_area
-      @area = Area.find(params[:id])
-    end
+  def find_area
+    @area = Area.find(params[:id])
+  end
 end
