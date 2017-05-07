@@ -108,7 +108,7 @@ ready = () ->
   mgr.registerCollapse $('#security-details-toggle'), $('.security-details-wrapper')
   mgr.registerCollapse $('#network-details-toggle'), $('.network-details-wrapper')
 
-  mgr.registerTypeahead $ '.typeahead'
+  mgr.registerTypeahead $ '#area_typeahead.typeahead'
 
 
 $(document).ready ready

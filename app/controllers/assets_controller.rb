@@ -1,11 +1,18 @@
 class AssetsController < ApplicationController
   before_action :find_asset, :except => [:new, :create, :index]
 
+  def index
+    @assets = Asset.all
+  end
+
+  def show
+  end
+
   def new
     @asset = Asset.build_asset
   end
 
-  def show
+  def edit
   end
 
   def create
@@ -17,7 +24,19 @@ class AssetsController < ApplicationController
     else
       render :new
     end
+  end
 
+  def update
+    if @asset.update(asset_params)
+      redirect_to asset_url(@asset), notice: 'Activo actualizado correctamente'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @asset.destroy # subject to further discussion
+    redirect_to assets_path
   end
 
   private
@@ -34,6 +53,7 @@ class AssetsController < ApplicationController
 
     params.require(:asset).permit(:type, :plate_number, :quantity, :description, :serial_number, :area_id, :photo,
                                   :status, :has_warranty, :has_tech_details, :has_security_details, :has_network_details,
+                                  :asset_category_id,
                                   :warranty_attributes => [:purchase_date, :month_period, :agent_name, :agent_phone],
                                   :technical_detail_attributes => [:cpu, :ram, :hdd, :os, :other],
                                   :security_detail_attributes => [:username, :password],

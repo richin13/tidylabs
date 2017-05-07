@@ -85,4 +85,8 @@ class Asset < ApplicationRecord
     types.fetch(type.to_sym)
   end
 
+  def generate_id_code
+    # TODO
+  end
+
 end

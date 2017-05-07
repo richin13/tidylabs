@@ -7,3 +7,10 @@ areas = Area.create([
                         {name: 'Vida estudiantil', description: 'Vida estudiantil'},
                         {name: 'Seguridad', description: 'Oficina de seguridad e Información'},
                     ])
+
+categories = AssetCategory.create([
+                                      {name: 'Laptops', description: 'Laptops'},
+                                      {name: 'Computadoras de escritorio', description: 'PCs'},
+                                      {name: 'Legos', description: 'Legos'},
+                                      {name: 'Televisores', description: 'TVs'}
+                                  ])
