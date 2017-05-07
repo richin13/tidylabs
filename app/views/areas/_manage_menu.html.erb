@@ -1,0 +1,23 @@
+<div class="btn-group">
+  <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+    Ajustes
+  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <%= link_to edit_area_path do %>
+       <%= fa_icon "wrench", text: "Editar" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to edit_area_path do %>
+       <%= fa_icon "plus", text: "Agregar activos" %>
+      <% end %>
+    </li>
+    <li role="separator" class="divider"></li>
+    <li>
+      <%= link_to edit_area_path do %>
+       <%= fa_icon "trash", text: "Eliminar" %>
+      <% end %>
+    </li>
+  </ul>
+</div>

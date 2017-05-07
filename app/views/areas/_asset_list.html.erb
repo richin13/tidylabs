@@ -1,0 +1,31 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>No. placa</th>
+      <th>Categoria</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody class="list">
+    <% @area.assets.each do |asset| %>
+      <tr>
+        <td class="serial"><%= asset.id %></td>
+        <td class="plate"><%= asset.plate_number? ? asset.plate_number : '-' %></td>
+        <td class="category"><%= asset.category.name %></td>
+        <td>
+          <span class="type label label-<%= asset.type.include?('Un') ? 'default' : 'info' %>">
+            <%= asset.type_to_h.capitalize %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @area.assets.empty? %>
+  <p class="text-center">
+    Esta area no tiene activos asignados, puede <%= link_to "ingresar", new_asset_path %> nuevos activos 
+    o <%= link_to "asignarlos", edit_area_path %> a esta area
+  </p>
+<% end %>

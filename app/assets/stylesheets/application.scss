@@ -10,7 +10,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- * = require font-awesome
+ *= require_tree .
+ *= require_self
  */
 
 $blue-ucr: #005da4;
@@ -32,23 +33,13 @@ $link-hover-decoration: none;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "utils";
 @import "animate";
+@import "font-awesome";
 
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-}
-
-.btn {
-  vertical-align: baseline;
-  color: #000;
-  transition: background .1s ease-in;
-}
-
-.btn:hover {
-  color: #000;
 }
 
 .navbar-ucr {
@@ -109,7 +100,7 @@ body {
 }
 
 .footer img {
-  @extend .pointer;
+  @extend .pointer !optional;
   margin: 0;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);

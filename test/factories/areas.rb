@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :area do
-    name ""
-    description ""
+    name "Lab #6"
+    description "Main lab. Full of expensives computers"
   end
 end
