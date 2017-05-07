@@ -1,0 +1,23 @@
+<%= f.simple_fields_for :technical_detail_attributes do |td| %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <%= td.input :cpu, label: 'Procesador' %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= td.input :ram, label: 'Memoria RAM' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <%= td.input :hdd, label: 'Disco duro' %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= td.input :os, label: 'Sistema operativo' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= td.input :other, label: 'Otros detalles' %>
+      </div>
+    </div>
+<% end %>

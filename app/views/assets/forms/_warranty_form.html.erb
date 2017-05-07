@@ -1,0 +1,18 @@
+<%= f.simple_fields_for :warranty_attributes do |td| %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <%= td.input :purchase_date, label: 'Fecha de compra' %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= td.input :month_period, label: 'Meses de garantía' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <%= td.input :agent_name, label: 'Emisor de la garantía' %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= td.input :agent_phone, label: 'Teléfono' %>
+      </div>
+    </div>
+<% end %>

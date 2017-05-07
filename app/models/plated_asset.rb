@@ -1,7 +1,4 @@
 class PlatedAsset < Asset
-  has_one :network_detail
-  has_one :security_detail
-  has_one :technical_detail
-
-  validates_presence_of :plate_number
+  validates :plate_number, presence: {message: 'Este campo es requerido'},
+            uniqueness: {message: 'Ya existe un activo con ese número de placa'}
 end
