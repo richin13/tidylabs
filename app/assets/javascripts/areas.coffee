@@ -7,9 +7,13 @@ $(document).on 'turbolinks:load', ->
   ]
 
   assetList = new List('asset-list', options)
+  areaList = new List('area-list', valueNames: ['name'])
 
   $('#asset-list-search').keyup ->
     assetList.search $(this).val()
+
+  $('#area-list-search').keyup ->
+    areaList.search $(this).val()
 
   $('#plated-filter').change ->
     applyTypeFilter 'con placa' if @checked
