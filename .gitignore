@@ -26,3 +26,7 @@ vendor/bundle
 
 # Paperclip storage.
 public/system/*
+
+# Idea dir
+.idea
+
