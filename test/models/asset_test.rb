@@ -15,7 +15,7 @@ class AssetTest < ActiveSupport::TestCase
     plated_asset = PlatedAsset.new
     unplat_asset = UnplatedAsset.new
 
-    assert_equal 'con placa', plated_asset.type_to_h
-    assert_equal 'sin placa', unplat_asset.type_to_h
+    assert_equal 'Con placa', plated_asset.type_to_h
+    assert_equal 'Sin placa', unplat_asset.type_to_h
   end
 end
