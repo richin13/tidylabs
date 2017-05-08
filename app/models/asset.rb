@@ -12,8 +12,9 @@ class Asset < ApplicationRecord
   belongs_to :area
   belongs_to :asset_category, optional: true
 
-  scope :plated, -> { where(type: 'PlatedAsset') }
+  scope :plated,   -> { where(type: 'PlatedAsset') }
   scope :unplated, -> { where(type: 'UnplatedAsset') }
+  scope :retired,  -> { where(status: 2) }
 
   enum status: [:service, :loan, :retired, :maintenance, :unassigned]
 
@@ -24,33 +25,35 @@ class Asset < ApplicationRecord
   accepts_nested_attributes_for :security_detail
   accepts_nested_attributes_for :technical_detail
 
-  has_attached_file :photo, styles: {medium: '300x300>', thumb: '100x100>'},
+  has_attached_file :photo, styles: { medium: '300x300>', thumb: '100x100>' },
                     default_url: '/images/:style/missing.png'
-  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
-  # Validations
-  validates :serial_number, presence: {message: 'Este campo es requerido'},
-            uniqueness: {message: 'Ya existe un activo con esa serie'}
+  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
   validates_presence_of :description, :status, :type, message: 'Este campo es requerido'
+
+  validates :serial_number, presence: { message: 'Este campo es requerido' },
+            uniqueness: { message: 'Ya existe un activo con esa serie' }
+
   validates_inclusion_of :has_warranty, :has_tech_details, :has_network_details,
                          :has_security_details, in: [true, false]
+
   validates_associated :warranty, if: :has_warranty?
   validates_associated :technical_detail, if: :has_tech_details?
   validates_associated :security_detail, if: :has_security_details?
   validates_associated :network_detail, if: :has_network_details?
 
   TYPES = {
-      :PlatedAsset => 'Con placa',
-      :UnplatedAsset => 'Sin placa'
-  }
+    PlatedAsset: 'Con placa',
+    UnplatedAsset: 'Sin placa'
+  }.freeze
 
   STATUS = {
-      :service => 'En servicio',
-      :loan => 'En préstamo',
-      :retired => 'Desechado',
-      :maintenance => 'En mantenimiento',
-      :unassigned => 'Sin asignar'
-  }
+    service: 'En servicio',
+    loan: 'En préstamo',
+    retired: 'Desechado',
+    maintenance: 'En mantenimiento',
+    unassigned: 'Sin asignar'
+  }.freeze
 
   def self.build_asset
     asset = Asset.new
@@ -77,16 +80,11 @@ class Asset < ApplicationRecord
     self[:has_network_details]
   end
 
-  def types
-    { PlatedAsset: 'placa', UnplatedAsset: 'sin placa' }
-  end
-
   def type_to_h
-    types.fetch(type.to_sym)
+    TYPES.fetch(type.to_sym)
   end
 
   def generate_id_code
     # TODO
   end
-
 end
