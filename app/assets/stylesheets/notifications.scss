@@ -1,0 +1,21 @@
+@import "bootstrap/variables";
+
+@media (min-width: $screen-sm-min) {
+  .messages {
+    background: transparent;
+    width: 270px;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    padding: 10px;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .messages {
+    background: transparent;
+    width: auto;
+    position: relative;
+    padding:2px;
+  }
+}

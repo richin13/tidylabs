@@ -38,6 +38,7 @@ $link-hover-decoration: none;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "utils";
+@import "notifications";
 
 body {
   display: flex;
@@ -122,15 +123,6 @@ body {
 
 a.logout {
   color: $alert-danger-text !important;
-}
-
-.messages {
-  background: transparent;
-  width: 40%;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 10px;
 }
 
 .warranty-details-wrapper,
