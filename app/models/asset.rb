@@ -14,7 +14,6 @@ class Asset < ApplicationRecord
 
   scope :plated,   -> { where(type: 'PlatedAsset') }
   scope :unplated, -> { where(type: 'UnplatedAsset') }
-  scope :retired,  -> { where(status: 2) }
 
   enum status: [:service, :loan, :retired, :maintenance, :unassigned]
 
@@ -82,6 +81,10 @@ class Asset < ApplicationRecord
 
   def type_to_h
     TYPES.fetch(type.to_sym)
+  end
+
+  def status_to_h
+    STATUS.fetch(status.to_sym)
   end
 
   def generate_id_code

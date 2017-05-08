@@ -1,8 +1,9 @@
-$ ->
+$(document).on 'turbolinks:load', ->
   options = valueNames: [
     'plate'
     'category'
     'type'
+    'status'
   ]
 
   assetList = new List('asset-list', options)
@@ -11,14 +12,22 @@ $ ->
     assetList.search $(this).val()
 
   $('#plated-filter').change ->
-    applyFilter 'con placa' if @checked
+    applyTypeFilter 'con placa' if @checked
 
   $('#unplated-filter').change ->
-    applyFilter 'sin placa' if @checked
+    applyTypeFilter 'sin placa' if @checked
 
-  $('#reset-filter').change ->
+  $('#all-filter').change ->
     assetList.filter()
 
-  applyFilter = (type) ->
+  $('#status-filter').change ->
+    status = $(this).find('option:selected').val()
+    if status != 'all' then applyStatusFilter status else assetList.filter()
+
+  applyTypeFilter = (type) ->
     assetList.filter (item) ->
       return item.values().type.toLowerCase().trim() == type
+
+  applyStatusFilter = (status) ->
+    assetList.filter (item) ->
+      return item.values().status == status

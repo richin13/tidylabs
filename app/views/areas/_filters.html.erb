@@ -1,0 +1,34 @@
+<p><strong>Mostrar</strong></p>
+<div class="filters">
+  <ul class="list-inline">
+    <li>
+       <label>
+        <input type="radio" name="typeFilterRadios" id="all-filter" checked>
+        Todos
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="radio" name="typeFilterRadios" id="plated-filter">
+        Con Placa
+      </label>
+    </li>
+    <li>
+       <label>
+        <input type="radio" name="typeFilterRadios" id="unplated-filter">
+        Sin Placa
+      </label>
+    </li>
+  </ul>
+  <div class="form-group">
+    <label for="status-filter">Estado</label>
+    <select class="form-control" id="status-filter">
+      <option value="all">Todos</option>
+      <% statuses = Asset.statuses.keys - %w(unassigned retired) %>
+      <% statuses.each do |status| %>
+        <% status_t = translate_status(status) %>
+        <option value="<%= status_t %>"><%= status_t %></option>
+      <% end %>
+    </select>
+  </div>
+</div>

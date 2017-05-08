@@ -1,0 +1,31 @@
+<p><strong>Estadisticas</strong></p>
+<ul class="list-group">
+  <li class="list-group-item">
+    <span class="badge"><%= @area.assets.plated.count %></span>
+    <%= fa_icon "shield fw", text: 'Con placa' %>
+  </li>
+  <li class="list-group-item">
+    <span class="badge"><%= @area.assets.unplated.count %></span>
+    <%= fa_icon "square-o fw", text: 'Sin placa' %>
+  </li>
+  <hr>
+</ul>
+
+<ul class="list-group">
+  <li class="list-group-item">
+    <span class="badge"><%= @area.assets.service.count %></span>
+    <%= fa_icon "tachometer fw", text: 'Servicio' %>
+  </li>
+  <li class="list-group-item">
+    <span class="badge"><%= @area.assets.loan.count %></span>
+    <%= fa_icon "suitcase fw", text: 'Prestamo' %>
+  </li>
+  <li class="list-group-item">
+    <span class="badge"><%= @area.assets.maintenance.count %></span>
+    <%= fa_icon "wrench fw", text: 'Mantenimiento' %>
+  </li>
+  <li class="list-group-item">
+    <span class="badge"><%= @area.assets.retired.count %></span>
+    <%= fa_icon "trash fw", text: 'Retirados' %>
+  </li>
+</ul>

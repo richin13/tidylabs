@@ -3,7 +3,7 @@
    <%= link_to new_area_path, class: "btn btn-primary btn-xs pull-right" do %>
     <%= fa_icon "plus", text: "Nueva area" %>
    <% end %>
-   <h1>Areas del recinto</h1>
+   <h1>Areas del recinto <small><%= @areas.count %></small></h1>
  </div>
 
  <div class="col-md-12">
@@ -22,7 +22,7 @@
         <% end %>
         <p><%= truncate(area.description, length: 30, separator: "...") %></p>
 
-        <%= fa_icon "cubes", text: area.assets.count, title: "Activos" %>
+        <%= fa_icon "cubes fw", text: area.assets.count, title: "Activos" %>
        </div>
      </div>
     </div>

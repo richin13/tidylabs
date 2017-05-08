@@ -21,7 +21,7 @@
       <div class="col-md-8 col-xs-6">
         <p class="in-line"><strong><%= @area.name.capitalize %></strong></p>
         <ul class="list-inline">
-          <li><%= fa_icon "cubes fw", text: @area.assets.count, title: "Activos" %> activos</li>
+          <li><%= fa_icon "cubes fw", text: @area.assets.count %> activos</li>
           <li><%= fa_icon "cog fw" %> <%= render "manage_menu" %> </li>
         </ul>
       </div>
@@ -34,31 +34,15 @@
 
   <div class="panel panel-default">
     <div class="panel-body">
-      <p><strong>Mostrar</strong></p>
-      <div class="filters">
-        <ul class="list-inline"> 
-          <li>
-            <label>
-              <input type="radio" name="typeFilterRadios" id="plated-filter">
-              Con Placa
-            </label>
-          </li>
-          <li>
-             <label>
-              <input type="radio" name="typeFilterRadios" id="unplated-filter">
-              Sin Placa
-            </label>
-          </li>
-          <li>
-             <label>
-              <input type="radio" name="typeFilterRadios" id="reset-filter" checked>
-              Todos
-            </label>
-          </li>
-        </ul>
-      </div>
+      <%= render "filters" %>
     </div>
   </div>
 
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= render "stats" %>
+    </div>
+  </div>
+  
  </div>
 </div>

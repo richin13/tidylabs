@@ -5,19 +5,22 @@
       <th>No. placa</th>
       <th>Categoria</th>
       <th>Tipo</th>
+      <th>Estado</th>
     </tr>
   </thead>
   <tbody class="list">
-    <% @area.assets.each do |asset| %>
+    <% assets = @area.assets.where.not(status: :retired) %>
+    <% assets.each do |asset| %>
       <tr>
         <td class="serial"><%= asset.id %></td>
-        <td class="plate"><%= asset.plate_number? ? asset.plate_number : '-' %></td>
+        <td class="plate"><%= link_to asset.plate_number? ? asset.plate_number : 'N/A', asset_path(asset) %></td>
         <td class="category"><%= asset.category.name %></td>
         <td>
           <span class="type label label-<%= asset.type.include?('Un') ? 'default' : 'info' %>">
             <%= asset.type_to_h.capitalize %>
           </span>
         </td>
+        <td class="status"><%= asset.status_to_h %></td>
       </tr>
     <% end %>
   </tbody>
