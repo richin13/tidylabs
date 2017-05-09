@@ -22,7 +22,7 @@
               <%= image_tag @asset.area.photo.url(:thumb), class: 'img-thumbnail' %>
               <p class="text-center">
                 <%= link_to 'Ver área', area_path(@asset.area) %> |
-                <%= link_to 'Cambiar ubicación', '#' %>
+                <%= link_to 'Reubicaciones', asset_relocations_path(@asset.id) %>
               </p>
             </p>
           </div>
