@@ -34,6 +34,12 @@
           <td><i class="fa fa-database"></i> Almacenamiento</td>
           <td><%= @asset.technical_detail.hdd_to_nice %></td>
         </tr>
+        <% unless @asset.technical_detail.other.empty? %>
+          <tr>
+            <td>Otros</td>
+            <td><%= @asset.technical_detail.other %></td>
+          </tr>
+        <% end %>
       </table>
     </div>
 <% else %>
