@@ -1,3 +1,33 @@
-// Place all the styles related to the Assets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.asset-details h4 {
+  margin-top: 2em;
+}
+
+.asset-details h4:first-child {
+  margin-top: 0;
+}
+
+.asset-details table tr td:nth-child(odd) {
+  font-weight: bold;
+}
+
+.asset-details table {
+  border: 0;
+}
+
+.details-wrapper {
+  margin-top: 2em;
+  margin-bottom: .5em;
+}
+
+.details-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.icon-link, .icon-link:hover {
+  color: #000;
+}
+
+.delete-link, .delete-link:hover {
+  color: #b01e05 !important;
+}

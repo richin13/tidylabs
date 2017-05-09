@@ -1,0 +1,33 @@
+<div class="details-wrapper clearfix">
+  <span class="details-title">Seguridad</span>
+  <% if @asset.has_security_details? %>
+    <div class="float-right">
+      <div class="dropdown">
+        <a href="" class="icon-link" data-toggle="dropdown"><i class="fa fa-caret-down fa-1x"></i></a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a href="#" id="di-security-edit" class="icon-link"><i class="fa fa-edit"></i> Editar</a></li>
+          <li><%= link_to fa_icon('trash') + ' Eliminar', security_detail_url(@asset.security_detail.id),
+                          method: :delete, class: 'delete-link', data: {confirm: 'Esta seguro?'} %></li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
+<% if @asset.has_security_details? %>
+  <div class="table-responsive">
+    <table class="table">
+      <tr>
+        <td><i class="fa fa-user"></i> Usuario</td>
+        <td><%= @asset.security_detail.username %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-lock"></i> Contraseña</td>
+        <td><%= @asset.security_detail.password %></td>
+      </tr>
+    </table>
+  </div>
+<% else %>
+  <div class="alert alert-info">
+    El activo no posee detalles de seguridad. ¿Desea <a href="#" id="a-security-create">agregarlos</a>?
+  </div>
+<% end %>

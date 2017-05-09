@@ -61,6 +61,26 @@ class AssetCreationManager
     }).bind('typeahead:select', options.onSelect)
 
 
+class AssetDisplayManager
+  constructor: () ->
+
+  initMomentJS: (selector) ->
+    date = selector.data('date')
+    selector.html(moment(date).fromNow())
+
+  registerModal: (trigger, _modal) ->
+    console.log(_modal)
+    trigger.on 'click', (e) ->
+      e.preventDefault()
+      _modal.modal('show')
+
+  registerActions: (selectors, modal) ->
+    for s in selectors
+      $(s).on 'click', (e) ->
+        e.preventDefault()
+        $(modal).modal('show')
+
+
 ready = () ->
   $('.selectpicker').selectpicker() # Init bootstrap-select
   $('input[type="checkbox"].toggle').bootstrapToggle({
@@ -92,6 +112,14 @@ ready = () ->
     onSelect: (ev, s) ->
       $('#asset_category_id').val(s.id)
   }
+
+  displayMgr = new AssetDisplayManager()
+  displayMgr.initMomentJS $('.momentjs')
+
+  displayMgr.registerActions(['#a-specs-create','#di-specs-edit'], '#specs-modal')
+  displayMgr.registerActions(['#a-warranty-create','#di-warranty-edit'], '#warranty-modal')
+  displayMgr.registerActions(['#a-network-create','#di-network-edit'], '#network-modal')
+  displayMgr.registerActions(['#a-security-create','#di-security-edit'], '#security-modal')
 
   true
 

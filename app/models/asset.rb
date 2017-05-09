@@ -67,16 +67,36 @@ class Asset < ApplicationRecord
     self[:has_warranty]
   end
 
+  def has_warranty!
+    self[:has_warranty] = !self.has_warranty?
+    self.save
+  end
+
   def has_tech_details?
     self[:has_tech_details]
+  end
+
+  def has_tech_details!
+    self[:has_tech_details] = !self.has_tech_details?
+    self.save
   end
 
   def has_security_details?
     self[:has_security_details]
   end
 
+  def has_security_details!
+    self[:has_security_details] = !self.has_security_details?
+    self.save
+  end
+
   def has_network_details?
     self[:has_network_details]
+  end
+
+  def has_network_details!
+    self[:has_network_details] = !self.has_network_details?
+    self.save
   end
 
   def type_to_h

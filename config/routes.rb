@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :assets do
     resources :warranties, shallow: true
+    resources :technical_details, shallow: true
+    resources :network_details, shallow: true
+    resources :security_details, shallow: true
     resources :identification_codes, shallow: true
     resources :relocations
   end

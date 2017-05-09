@@ -7,5 +7,9 @@
 //= require twitter/typeahead
 //= require underscore
 //= require list
+//= require moment
+//= require moment/es
+//= require sweetalert2
+//= require rails-sweetalert2-confirm
 //= require turbolinks
 //= require_tree .
