@@ -1,0 +1,27 @@
+<%= simple_form_for @relocation, url: asset_relocations_path do |f| %>
+  <div class="form-group">
+     <div class="col-sm-6">
+       <%= f.association :from_area,
+                         :collection => Area.where("id == %i", @asset.area.id),
+                         :selected   => @asset.area.id,
+                         readonly: true, label: 'Ubicación actual' %>
+     </div>
+     <div class="col-sm-6">
+       <%= f.association :to_area, 
+                         :collection => Area.where.not(id: @asset.area.id), 
+                         prompt: 'Seleccione un area', label: 'Ubicación destino' %>
+     </div>
+   </div>
+
+   <div class="form-group">
+     <div class="col-sm-12">
+       <%= f.input :reason, placeholder: 'Brinde una explicación de la reubicacion', label: 'Razón' %>
+     </div>
+   </div>
+
+   <div class="form-group">
+     <div class="col-sm-12">
+       <%= f.button :submit, "Reubicar", class: "btn-primary" %>
+     </div>
+   </div>
+<% end %>

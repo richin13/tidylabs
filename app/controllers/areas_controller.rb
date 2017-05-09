@@ -41,6 +41,7 @@ class AreasController < ApplicationController
   end
 
   private
+  
   def area_params
     params.require(:area).permit(:name, :description, :photo)
   end
