@@ -19,7 +19,7 @@ a {
 }
 
 .alert-notice {
-  @extend .alert-info !optional;
+  @extend .alert-success !optional;
 }
 
 /* To simulate a link */
