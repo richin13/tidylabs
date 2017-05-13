@@ -30,6 +30,9 @@
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="<%= url_for new_asset_path %>"><i class="fa fa-plus"></i> Nuevo</a></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to fa_icon('th-list') + ' Ver categorías', categories_path %></li>
+            <li><%= link_to fa_icon('plus') + ' Crear categoría', new_category_path %></li>
           </ul>
         </li>
 

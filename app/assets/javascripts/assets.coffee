@@ -42,6 +42,8 @@ class AssetCreationManager
 
     if options.prefetch
       bloodhoundOptions['prefetch'] = options.url
+      bloodhoundOptions['cache'] = false
+      bloodhoundOptions['ttl'] = 1
     else
       bloodhoundOptions['remote'] = {
         url: options.url,
@@ -58,7 +60,12 @@ class AssetCreationManager
       name: options.name,
       display: options.display,
       source: source
-    }).bind('typeahead:select', options.onSelect)
+    }).bind('typeahead:select', options.onSelect).on('keyup', (e) ->
+      if e.which == 13
+        e.preventDefault()
+        alert 'pene'
+        $(".tt-suggestion:first-child", this).trigger('click')
+    )
 
 
 class AssetDisplayManager

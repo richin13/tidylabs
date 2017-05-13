@@ -1,2 +1,31 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<div class="row">
+  <div class="page-header">
+    <h1>Categorías de activos</h1>
+  </div>
+
+  <div class="col-md-12" id="area-list">
+    <% if @categories.empty? %>
+        <div class="text-center">
+          <p>No existen categorías registradas, puede crear un nueva <%= link_to 'aquí', new_category_path %></p>
+        </div>
+    <% end %>
+
+    <!-- ul for searching with list js -->
+    <ul class="list-unstyled list">
+      <% @categories.each do |category| %>
+          <li>
+            <div class="col-md-3 col-equal">
+              <div class="panel panel-default panel-equal">
+                <div class="panel-body">
+                  <h4 class="name"><%= category.name.capitalize %></h4>
+                  <p><%= truncate(category.description, length: 30, separator: '...') %></p>
+
+                  <%= fa_icon 'cubes fw', text: category.assets.count, title: 'Activos' %>
+                </div>
+              </div>
+            </div>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
