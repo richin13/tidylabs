@@ -1,31 +1,38 @@
 <div class="row">
-  <div class="page-header">
-    <h1>Categorías de activos</h1>
+ <div class="page-header">
+  <div class="col-md-2 pull-right">
+    <input class="form-control input-sm" placeholder="Buscar categoria" id="category-list-search">
   </div>
+  <h1>Categorias <small><%= @categories.count %></small></h1>
+ </div>
 
-  <div class="col-md-12" id="area-list">
-    <% if @categories.empty? %>
-        <div class="text-center">
-          <p>No existen categorías registradas, puede crear un nueva <%= link_to 'aquí', new_category_path %></p>
+ <div class="col-md-12" id="category-list">
+  <% if @categories.empty? %>
+    <div class="text-center">
+      <p>No existen areas registradas, puede crear un nueva <%= link_to "aqui", new_category_path %></p>
+    </div>
+  <% end %>
+
+  <!-- ul for searching with list js -->
+  <ul class="list-unstyled list">
+    <% @categories.each do |category| %>
+      <li>
+        <div class="col-md-3 col-equal">
+         <div class="panel panel-default panel-equal">
+           <div class="panel-body">
+            <%= link_to category_path(category) do %>
+              <h4 class="name" title="<%= category.name.capitalize %>">
+                <%= truncate(category.name.capitalize, length: 14, separator: "...") %>
+              </h4>
+            <% end %>
+            <p><%= truncate(category.description, length: 30, separator: "...") %></p>
+
+            <%= fa_icon "cubes fw", text: category.assets.count, title: "Activos" %>
+           </div>
+         </div>
         </div>
+      </li>
     <% end %>
-
-    <!-- ul for searching with list js -->
-    <ul class="list-unstyled list">
-      <% @categories.each do |category| %>
-          <li>
-            <div class="col-md-3 col-equal">
-              <div class="panel panel-default panel-equal">
-                <div class="panel-body">
-                  <h4 class="name"><%= category.name.capitalize %></h4>
-                  <p><%= truncate(category.description, length: 30, separator: '...') %></p>
-
-                  <%= fa_icon 'cubes fw', text: category.assets.count, title: 'Activos' %>
-                </div>
-              </div>
-            </div>
-          </li>
-      <% end %>
-    </ul>
-  </div>
+   </ul>
+ </div>
 </div>
