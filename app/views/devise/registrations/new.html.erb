@@ -8,18 +8,18 @@
           <%= f.error_notification %>
 
           <div class="form-inputs">
-            <%= f.input :email, required: true, autofocus: true %>
-            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-            <%= f.input :password_confirmation, required: true %>
+            <%= f.input :email, required: true, autofocus: true, label: 'Correo electrónico' %>
+            <%= f.input :password, required: true, label: 'Contraseña', hint: ("#{@minimum_password_length} carácteres mínimo" if @minimum_password_length) %>
+            <%= f.input :password_confirmation, required: true, label: 'Confirme contraseña' %>
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Registrarse", class: 'btn-success btn-block' %>
+            <%= f.button :submit, 'Registrarse', class: 'btn btn-primary btn-block' %>
           </div>
       <% end %>
     </div>
     <div class="panel-footer clearfix">
-      <%= render "devise/shared/links" %>
+      <%= render 'devise/shared/links' %>
     </div>
   </div>
 </div>
