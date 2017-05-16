@@ -31,3 +31,21 @@
 .delete-link, .delete-link:hover {
   color: #b01e05 !important;
 }
+
+.asset-thumbnail {
+  margin-bottom: 10px;
+  width: 45%;
+  height: 45%;
+}
+
+.id-code-thumbnail {
+  margin-bottom: 10px;
+  width: 60%;
+  height: 60%;
+}
+
+.asset-details .badge {
+  border-radius: 0 !important;
+  background-color: transparent;
+  border: 1px solid !important;
+}

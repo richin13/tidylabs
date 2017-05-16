@@ -3,11 +3,11 @@
   <div class="col-md-2 pull-right">
     <input class="form-control input-sm" placeholder="Buscar area" id="area-list-search">
   </div>
-  <h1>Areas del recinto <small><%= @categories.count %></small></h1>
+  <h1>Areas del recinto <small><%= @areas.count %></small></h1>
  </div>
 
  <div class="col-md-12" id="area-list">
-  <% if @categories.empty? %>
+  <% if @areas.empty? %>
     <div class="text-center">
       <p>No existen areas registradas, puede crear un nueva <%= link_to "aqui", new_area_path %></p>
     </div>
@@ -15,7 +15,7 @@
 
   <!-- ul for searching with list js -->
   <ul class="list-unstyled list">
-    <% @categories.each do |area| %>
+    <% @areas.each do |area| %>
       <li>
         <div class="col-md-3 col-equal">
          <div class="panel panel-default panel-equal">

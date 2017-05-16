@@ -3,11 +3,11 @@ class AreasController < ApplicationController
   before_action :find_area, only: [:show, :edit, :update]
 
   def index
-    @categories = Area.all
+    @areas = Area.all
 
     respond_to do |format|
       format.html
-      format.json { render json: @categories } # TODO: Improve JSON structure
+      format.json { render json: @areas } # TODO: Improve JSON structure
     end
   end
 
