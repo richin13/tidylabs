@@ -60,12 +60,7 @@ class AssetCreationManager
       name: options.name,
       display: options.display,
       source: source
-    }).bind('typeahead:select', options.onSelect).on('keyup', (e) ->
-      if e.which == 13
-        e.preventDefault()
-        alert 'pene'
-        $(".tt-suggestion:first-child", this).trigger('click')
-    )
+    }).bind('typeahead:select', options.onSelect)
 
 
 class AssetDisplayManager
