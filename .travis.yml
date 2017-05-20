@@ -1,9 +1,10 @@
 language: ruby
 rvm:
   - 2.4.0
-before_install:
+before_script:
+  - curl -sL https://deb.nodesource.com/setup | sudo bash -
   - sudo apt-get -qq update
-  - sudo apt-get install nodejs npm
+  - sudo apt-get install nodejs
   - sudo npm install -g bower
 script:
   - bundle exec rake bower:install
