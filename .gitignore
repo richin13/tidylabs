@@ -30,3 +30,5 @@ public/system/*
 # Idea dir
 .idea
 
+# Bower-rails
+vendor/assets/bower_components
