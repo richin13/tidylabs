@@ -2,7 +2,7 @@
   <h1>Editar detalles técnicos</h1>
   <hr>
   <%= simple_form_for @technical_detail do |f| %>
-    <%= render 'technical_details/forms/create', f: f %>
+    <%= render 'technical_details/forms/fields', f: f %>
     <%= f.submit 'Guardar', class: 'btn btn-success' %>
   <% end %>
 </div>

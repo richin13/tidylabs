@@ -2,7 +2,7 @@
   <h1>Editar detalles de seguridad</h1>
   <hr>
   <%= simple_form_for @security_details do |f| %>
-    <%= render 'security_details/forms/create', f: f %>
+    <%= render 'security_details/forms/fields', f: f %>
     <%= f.submit 'Guardar', class: 'btn btn-success' %>
   <% end %>
 </div>

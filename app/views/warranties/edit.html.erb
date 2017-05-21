@@ -2,7 +2,7 @@
   <h1>Editar garantía</h1>
   <hr>
   <%= simple_form_for @warranty do |f| %>
-    <%= render 'warranties/forms/create', f: f %>
+    <%= render 'warranties/forms/fields', f: f %>
     <%= f.submit 'Guardar', class: 'btn btn-success' %>
   <% end %>
 </div>
