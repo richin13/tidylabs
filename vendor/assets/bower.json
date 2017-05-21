@@ -1,7 +1,6 @@
 {
   "name": "dsl-generated-dependencies",
   "dependencies": {
-    "Font-Awesome": "latest",
     "listjs": "latest",
     "bootstrap-select": "latest",
     "bootstrap-toggle": "latest",
