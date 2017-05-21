@@ -7,10 +7,11 @@ class AssetsController < ApplicationController
   end
 
   def show
+    @asset.build_details
   end
 
   def new
-    @asset = Asset.build_asset
+    @asset = Asset.new
   end
 
   def edit

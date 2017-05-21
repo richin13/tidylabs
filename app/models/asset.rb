@@ -33,12 +33,7 @@ class Asset < ApplicationRecord
   validates :serial_number, uniqueness: { message: 'Ya existe un activo con esa serie' }
 
   validates_inclusion_of :has_warranty, :has_tech_details, :has_network_details,
-                         :has_security_details, in: [true, false]
-
-  validates_associated :warranty, if: :has_warranty?
-  validates_associated :technical_detail, if: :has_tech_details?
-  validates_associated :security_detail, if: :has_security_details?
-  validates_associated :network_detail, if: :has_network_details?
+                         :has_security_details, in: [true, false, nil]
 
   TYPES = {
     PlatedAsset: 'Con placa',
@@ -60,6 +55,24 @@ class Asset < ApplicationRecord
     asset.build_security_detail
     asset.build_network_detail
     asset
+  end
+
+  def build_details
+    unless warranty
+      self.build_warranty
+    end
+
+    unless technical_detail
+      self.build_technical_detail
+    end
+
+    unless network_detail
+      build_network_detail
+    end
+
+    unless security_detail
+      build_security_detail
+    end
   end
 
   def has_warranty?
