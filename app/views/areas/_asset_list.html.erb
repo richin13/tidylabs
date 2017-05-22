@@ -1,0 +1,34 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>No. placa</th>
+      <th>Categoria</th>
+      <th>Tipo</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody class="list">
+    <% assets = @area.assets.where.not(status: :retired) %>
+    <% assets.each do |asset| %>
+      <tr>
+        <td class="serial"><%= asset.id %></td>
+        <td class="plate"><%= link_to asset.plate_number? ? asset.plate_number : 'N/A', asset_path(asset) %></td>
+        <td class="category"><%= asset.category.name %></td>
+        <td>
+          <span class="type label label-<%= asset.type.include?('Un') ? 'default' : 'info' %>">
+            <%= asset.type_to_h.capitalize %>
+          </span>
+        </td>
+        <td class="status"><%= asset.status_to_h %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @area.assets.empty? %>
+  <p class="text-center">
+    Esta area no tiene activos asignados, puede <%= link_to "ingresar", new_asset_path %> nuevos activos 
+    o <%= link_to "asignarlos", edit_area_path %> a esta area
+  </p>
+<% end %>

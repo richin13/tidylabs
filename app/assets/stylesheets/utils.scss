@@ -1,0 +1,44 @@
+a {
+  transition: color .1s ease-in-out;
+}
+
+.bordered {
+  border: solid 1px black
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.alert-alert {
+  @extend .alert-warning !optional;
+}
+
+.alert-notice {
+  @extend .alert-success !optional;
+}
+
+/* To simulate a link */
+.pointer {
+  cursor: pointer;
+}
+
+/* To remove the ugly background in opened dropdowns */
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background: transparent !important;
+}
+
+.center-block {
+  @extend .center-block !optional;
+  float: none;
+}
+
+label {
+  abbr {
+    display: none;
+  }
+}

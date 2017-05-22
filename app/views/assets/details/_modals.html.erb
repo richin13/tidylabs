@@ -1,0 +1,19 @@
+<%= render 'assets/modals/specs', action: 'create', url: asset_technical_details_path(@asset.id) %>
+<% if @asset.has_tech_details? %>
+    <%= render 'assets/modals/specs', action: 'edit', url: technical_detail_path(@asset.technical_detail.id) %>
+<% end %>
+
+<%= render 'assets/modals/warranty', action: 'create', url: asset_warranties_path(@asset.id) %>
+<% if @asset.has_warranty? %>
+    <%= render 'assets/modals/warranty', action: 'edit', url: warranty_path(@asset.warranty.id) %>
+<% end %>
+
+<%= render 'assets/modals/network', action: 'create', url: asset_network_details_path(@asset.id) %>
+<% if @asset.has_network_details? %>
+    <%= render 'assets/modals/network', action: 'edit', url: network_detail_path(@asset.network_detail.id) %>
+<% end %>
+
+<%= render 'assets/modals/security', action: 'create', url: asset_security_details_path(@asset.id) %>
+<% if @asset.has_security_details? %>
+    <%= render 'assets/modals/security', action: 'edit', url: security_detail_path(@asset.security_detail.id) %>
+<% end %>

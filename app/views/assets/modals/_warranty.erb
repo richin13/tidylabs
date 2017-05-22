@@ -1,0 +1,20 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="<%= "warranty-modal-#{action}" %>">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Agregar garantía</h4>
+      </div>
+      <%= simple_form_for @asset.warranty, url: url do |f| %>
+          <div class="modal-body">
+            <%= render 'warranties/forms/fields', f: f %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <%= f.submit 'Guardar', class: 'btn btn-success' %>
+          </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

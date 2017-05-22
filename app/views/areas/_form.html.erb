@@ -1,0 +1,6 @@
+<%= simple_form_for @area do |f| %>
+  <%= f.input :name, label: 'Nombre' %>
+  <%= f.input :description, label: 'Description' %>
+  <%= f.input :photo, as: :file , label: 'Foto' %>
+  <%= f.button :submit, "Guardar", class: "btn-primary" %>
+<% end %>

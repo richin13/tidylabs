@@ -1,0 +1,42 @@
+<div class="details-wrapper clearfix">
+  <span class="details-title">Red</span>
+  <% if @asset.has_network_details? %>
+    <div class="float-right">
+      <div class="dropdown">
+        <a href="" class="icon-link" data-toggle="dropdown"><i class="fa fa-caret-down fa-1x"></i></a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a href="#" id="di-network-edit" class="icon-link"><i class="fa fa-edit"></i> Editar</a></li>
+          <li><%= link_to fa_icon('trash') + ' Eliminar', network_detail_url(@asset.network_detail.id),
+                          method: :delete, class: 'delete-link',
+                          data: {confirm: '¿Está seguro que desea borrar los detalles de red?'} %></li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
+<% if @asset.has_network_details? %>
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <td>Dirección IP</td>
+          <td><%= @asset.network_detail.ip %></td>
+        </tr>
+        <tr>
+          <td>Máscara de red</td>
+          <td><%= @asset.network_detail.mask %></td>
+        </tr>
+        <tr>
+          <td>Puerta de enlace</td>
+          <td><%= @asset.network_detail.gateway %></td>
+        </tr>
+        <tr>
+          <td>DNS</td>
+          <td><%= @asset.network_detail.dns %></td>
+        </tr>
+      </table>
+    </div>
+<% else %>
+    <div class="alert alert-info">
+      El activo no posee detalles de red. ¿Desea <a href="#" id="a-network-create">agregarlos</a>?
+    </div>
+<% end %>

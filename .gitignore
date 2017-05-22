@@ -4,8 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config.
+# Bundler.
 /.bundle
+vendor/bundle
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -19,3 +20,15 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# MacOS.
+.DS_Store
+
+# Paperclip storage.
+public/system/*
+
+# Idea dir
+.idea
+
+# Bower-rails
+vendor/assets/bower_components

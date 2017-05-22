@@ -1,0 +1,9 @@
+# A sample Bowerfile
+# Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
+
+asset 'listjs'
+asset 'bootstrap-select'
+asset 'bootstrap-toggle'
+asset 'underscore'
+asset 'animate-css'
+asset 'moment'

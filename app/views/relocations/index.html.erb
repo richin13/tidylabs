@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 text-center">
+    <div class="row">
+      <h3>
+        <%= fa_icon "map-marker" %> Activo <%= link_to "##{@asset.id}", asset_path(@asset) %> ubicado en
+        <%= link_to @current_location.name, area_path(@current_location) %>
+      </h3>
+    </div>
+    <div class="row">
+      <%= image_tag @current_location.photo.url(:thumb), class: "img-thumbnail area-thumbnail" %>
+    </div>
+    <div class="row">
+      <%= link_to 'Cambiar ubicación', new_asset_relocation_path, class: 'btn btn-default btn-xs' %>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <hr>
+    <h4>Movimientos</h4>
+  </div>
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Desde</th>
+          <th>Hacia</th>
+          <th>Razón</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @relocations.each do |r| %>
+          <tr>
+            <td><%= r.created_at.strftime("%F") %></td>
+            <td><%= link_to r.from_area.name, area_path(r.from_area) %></td>
+            <td><%= link_to r.to_area.name, area_path(r.to_area) %></td>
+            <td>
+              <button type="button" class="btn btn-default btn-xs" title="Razón"
+                      data-toggle="popover" data-trigger="hover" 
+                      data-content="<%= r.reason %>" id="<%= r.id %>">Ver razón</button>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @relocations.empty? %>
+      <p class="text-center">No existen reubicaciones registradas</p>
+    <% end %>
+  </div>
+</div>

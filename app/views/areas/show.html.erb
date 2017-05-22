@@ -1,0 +1,48 @@
+<div class="row">
+ <div class="page-header">
+   <h1>Area <%= @area.name.capitalize %></h1>
+ </div>
+
+ <div class="col-md-8" id="asset-list">
+  <%= render "asset_list" %>
+ </div>
+
+ <div class="col-md-4 side-bar">
+  <div class="search-bar">
+    <input class="form-control" placeholder="Buscar activo" id="asset-list-search">
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-md-4 col-xs-6">
+        <%= image_tag @area.photo.url(:thumb), class: "img-thumbnail area-thumbnail" %>
+      </div>
+
+      <div class="col-md-8 col-xs-6">
+        <p class="in-line"><strong><%= @area.name.capitalize %></strong></p>
+        <ul class="list-inline">
+          <li><%= fa_icon "cubes fw", text: @area.assets.count %> activos</li>
+          <li><%= fa_icon "cog fw" %> <%= render "manage_menu" %> </li>
+        </ul>
+      </div>
+
+      <div class="col-md-12">
+        <p><%= @area.description %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= render "filters" %>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= render "stats" %>
+    </div>
+  </div>
+  
+ </div>
+</div>
