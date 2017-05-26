@@ -7,10 +7,11 @@ class AssetsController < ApplicationController
   end
 
   def show
+    @asset.build_details
   end
 
   def new
-    @asset = Asset.build_asset
+    @asset = Asset.new
   end
 
   def edit
@@ -24,7 +25,6 @@ class AssetsController < ApplicationController
       @asset.generate_id_code
       redirect_to asset_url(@asset), notice: 'Activo creado correctamente'
     else
-      puts @asset.errors.inspect
       render :new
     end
   end

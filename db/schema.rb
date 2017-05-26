@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520045745) do
+ActiveRecord::Schema.define(version: 20170521195127) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
@@ -40,16 +40,16 @@ ActiveRecord::Schema.define(version: 20170520045745) do
     t.string   "type"
     t.integer  "area_id"
     t.integer  "asset_category_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.boolean  "has_warranty"
-    t.boolean  "has_tech_details"
-    t.boolean  "has_security_details"
-    t.boolean  "has_network_details"
+    t.boolean  "has_warranty",                   default: false
+    t.boolean  "has_tech_details",               default: false
+    t.boolean  "has_security_details",           default: false
+    t.boolean  "has_network_details",            default: false
     t.index ["area_id"], name: "index_assets_on_area_id"
     t.index ["asset_category_id"], name: "index_assets_on_asset_category_id"
   end

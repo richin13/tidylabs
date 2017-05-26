@@ -13,3 +13,12 @@
 //= require rails-sweetalert2-confirm
 //= require turbolinks
 //= require_tree .
+
+window.sweetAlertConfirmDefaults = {
+    sweetSelector: '[data-swal]',
+    text: 'La operación es irreversible',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonText: '<i class="fa fa-trash"></i> Sí',
+    cancelButtonText: "Cancelar"
+};

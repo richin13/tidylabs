@@ -6,7 +6,9 @@
         <a href="" class="icon-link" data-toggle="dropdown"><i class="fa fa-caret-down fa-1x"></i></a>
         <ul class="dropdown-menu dropdown-menu-right">
           <li><a href="#" id="di-warranty-edit" class="icon-link"><i class="fa fa-edit"></i> Editar</a></li>
-          <li><%= link_to fa_icon('trash') + ' Eliminar', warranty_url(@asset.warranty.id), method: :delete, id: 'di-warranty-delete', class: 'delete-link' %></li>
+          <li><%= link_to fa_icon('trash') + ' Eliminar', warranty_url(@asset.warranty.id),
+                          method: :delete, class: 'delete-link',
+                          data: {confirm: '¿Está seguro que desea borrar los detalles de garantía?'} %></li>
         </ul>
       </div>
     </div>

@@ -7,7 +7,8 @@
         <ul class="dropdown-menu dropdown-menu-right">
           <li><a href="#" id="di-network-edit" class="icon-link"><i class="fa fa-edit"></i> Editar</a></li>
           <li><%= link_to fa_icon('trash') + ' Eliminar', network_detail_url(@asset.network_detail.id),
-                          method: :delete, class: 'delete-link', data: {confirm: 'Esta seguro?'} %></li>
+                          method: :delete, class: 'delete-link',
+                          data: {confirm: '¿Está seguro que desea borrar los detalles de red?'} %></li>
         </ul>
       </div>
     </div>
