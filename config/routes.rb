@@ -3,13 +3,14 @@ Rails.application.routes.draw do
 
   root 'defaults#index'
 
-  devise_for :users, skip: [:sessions]
+  devise_for :users, controllers: { registrations: 'registrations'}, skip: [:sessions]
   as :user do
     get 'login', to: 'devise/sessions#new', as: :new_user_session
     post 'login', to: 'devise/sessions#create', as: :user_session
     delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
+  resources :users
   resources :areas
   resources :categories
   resources :assets do
@@ -20,4 +21,7 @@ Rails.application.routes.draw do
     resources :identification_codes, shallow: true
     resources :relocations
   end
+
+  get 'collaborators', to: 'users#index'
+  post 'collaborators', to: 'users#create', as: :new_collaborator
 end
