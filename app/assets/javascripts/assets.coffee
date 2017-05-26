@@ -72,11 +72,14 @@ class AssetDisplayManager
   constructor: () ->
 
   initMomentJS: (selector) ->
+    selector = $(selector)
     date = selector.data('date')
-    selector.html(moment(date).fromNow())
+    if moment(date).isValid()
+      selector.html(moment(date).fromNow())
+    else
+      selector.html 'Nunca'
 
   registerModal: (trigger, _modal) ->
-    console.log(_modal)
     trigger.on 'click', (e) ->
       e.preventDefault()
       _modal.modal('show')
@@ -88,7 +91,7 @@ class AssetDisplayManager
         $(modal).modal('show')
 
 
-ready = () ->
+$(document).on 'turbolinks:load', () ->
   $('.selectpicker').selectpicker() # Init bootstrap-select
   $('input[type="checkbox"].toggle').bootstrapToggle({
     on: 'Sí',
@@ -121,7 +124,9 @@ ready = () ->
   }
 
   displayMgr = new AssetDisplayManager()
-  displayMgr.initMomentJS $('.momentjs')
+
+  for s in $('.momentjs')
+    displayMgr.initMomentJS s
 
   displayMgr.registerActions(['#a-specs-create','#di-specs-edit'], '#specs-modal')
   displayMgr.registerActions(['#a-warranty-create','#di-warranty-edit'], '#warranty-modal')
@@ -129,7 +134,3 @@ ready = () ->
   displayMgr.registerActions(['#a-security-create','#di-security-edit'], '#security-modal')
 
   true
-
-
-$(document).ready ready
-$(document).on 'turbolinks:load', ready
