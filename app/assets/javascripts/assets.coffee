@@ -21,11 +21,14 @@ class AssetDisplayManager
   constructor: () ->
 
   initMomentJS: (selector) ->
+    selector = $(selector)
     date = selector.data('date')
-    selector.html(moment(date).fromNow())
+    if moment(date).isValid()
+      selector.html(moment(date).fromNow())
+    else
+      selector.html 'Nunca'
 
   registerModal: (trigger, _modal) ->
-    console.log(_modal)
     trigger.on 'click', (e) ->
       e.preventDefault()
       _modal.modal('show')
@@ -47,8 +50,10 @@ $(document).on 'turbolinks:load', () ->
   mgr.manageAssetType($ '#asset_type')
 
   displayMgr = new AssetDisplayManager()
-  displayMgr.initMomentJS $('.momentjs')
   displayMgr.renderIdCode('#raw-svg', '#id-code')
+
+  for s in $('.momentjs')
+    displayMgr.initMomentJS s
 
   mappings = [
     ['#a-specs-create',   '#specs-modal-create'],

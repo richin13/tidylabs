@@ -42,12 +42,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Ruth Fallas <span class="caret"></span>
+            <%= current_user.to_s %> <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">Inicio</a></li>
+            <li><%= link_to fa_icon('user') + ' Perfil', current_user %></li>
+            <li><%= link_to fa_icon('th-list') + ' Colaboradores', users_path %></li>
             <li role="separator" class="divider"></li>
-            <li><%= link_to('Cerrar sesión', destroy_user_session_path, method: :delete, class: 'logout') %></li>
+            <li><%= link_to(fa_icon('sign-out') + ' Cerrar sesión', destroy_user_session_path, method: :delete, class: 'logout') %></li>
           </ul>
         </li>
       </ul>
