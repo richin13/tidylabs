@@ -26,7 +26,7 @@ class AssetTest < ActiveSupport::TestCase
 
   test "asset should generate valid identification code" do
     asset = create(:plated_asset)
-    assert_equal "OCP_activo_#{asset.id}", asset.identification_code.code
+    assert_equal "ocp_activo_#{asset.id}", asset.identification_code.code
     assert_equal 'QR', asset.identification_code.code_type
   end
 end
