@@ -39,7 +39,7 @@ class AssetDisplayManager
       $(modal).modal('show')
 
 
-$(document).on 'turbolinks:load', () ->
+$(document).ready () ->
   $('.selectpicker').selectpicker() # Init bootstrap-select
 
   mgr = new AssetCreationManager()
