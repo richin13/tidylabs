@@ -23,6 +23,7 @@ gem 'bower-rails', '~> 0.11.0'
 
 gem 'simple_form', '~> 3.4'
 gem 'paperclip'
+gem 'rqrcode'
 
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'

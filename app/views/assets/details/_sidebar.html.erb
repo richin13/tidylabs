@@ -12,14 +12,6 @@
 
 <div>
   <hr>
-  <p><strong>Codigo identificacion</strong></p>
-  <div class="text-center">
-    <%= image_tag 'barcode-place-holder', class: "img-thumbnail id-code-thumbnail" %>
-  </div>
-</div>
-
-<div>
-  <hr>
   <p><strong>Informacion</strong></p>
   <ul class="list-group asset-details">
     <li class="list-group-item">
@@ -41,6 +33,19 @@
       No. de serie
     </li>
   </ul>
+</div>
+
+<div>
+  <hr>
+  <p><strong>Codigo identificacion</strong></p>
+  <div class="text-center code">
+    <div id="raw-svg" hidden>
+      <%= code_as_svg(@asset.identification_code, size: 3) %>
+    </div>
+    <%= link_to(asset_identification_codes_path(@asset)) do %>
+      <object id="id-code"></object>
+    <% end %>
+  </div>
 </div>
 
 <div>

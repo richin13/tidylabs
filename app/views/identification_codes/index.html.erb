@@ -1,0 +1,30 @@
+<div class="row">
+ <div class="page-header">
+  <h1>Codigo de identificacion</h1>
+ </div>
+ <div class="col-md-12">
+   <div class="col-md-4 id-code">
+    <div id="raw-svg" hidden>
+      <%= code_as_svg(@id_code, size: 7) %>
+    </div>
+   </div>
+
+   <div class="col-md-8">
+    <div class="col-md-12">
+      <h3>Detalles</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered actions">
+          <tr>
+            <td colspan="2">Tipo</td>
+            <td colspan="2" class="text-center"><%= @id_code.code_type %></td>
+          </tr>
+          <tr>
+            <td colspan="2">Datos codificados</td>
+            <td colspan="2" class="text-center"><code><%= @id_code.code %></code></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+   </div>
+ </div>
+</div>

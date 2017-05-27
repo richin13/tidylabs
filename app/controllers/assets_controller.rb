@@ -21,8 +21,6 @@ class AssetsController < ApplicationController
     @asset = Asset.new(asset_params)
 
     if @asset.save
-      # Maybe generate qr here?
-      @asset.generate_id_code
       redirect_to asset_url(@asset), notice: 'Activo creado correctamente'
     else
       render :new
@@ -43,6 +41,7 @@ class AssetsController < ApplicationController
   end
 
   private
+
   def find_asset
     @asset = Asset.find(params[:id])
   end
