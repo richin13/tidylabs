@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
+  post 'users/login', to: 'users#login'
   resources :users
   resources :areas
   resources :categories

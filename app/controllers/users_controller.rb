@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
-  before_action :find_user, except: [:index, :new, :create]
-  before_action :authenticate_user!
+  before_action :find_user, except: [:index, :new, :create, :login]
+  before_action :authenticate_user!, except: [:index, :login]
+  skip_before_action :verify_authenticity_token, :only => [:login]
 
   def index
     @users = User.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @users }
+    end
   end
 
   def show
@@ -23,6 +29,20 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def login
+    @user = User.find_by_pin(params[:pin])
+
+    respond_to do |format|
+      if @user
+        format.json { render json: @user }
+      else
+        # we need to figure out a way to prevent brute-force attacks!
+        format.json { render status: 400, json: {message: 'Invalid user credentials'} }
+      end
+    end
+
   end
 
   private
