@@ -19,6 +19,8 @@ class Asset < ApplicationRecord
 
   alias_attribute :category, :asset_category
 
+  after_create_commit :generate_id_code
+
   accepts_nested_attributes_for :warranty
   accepts_nested_attributes_for :network_detail
   accepts_nested_attributes_for :security_detail
@@ -119,7 +121,11 @@ class Asset < ApplicationRecord
     STATUS.fetch(status.to_sym)
   end
 
+  private
+
   def generate_id_code
-    # TODO
+    code = "ocp_activo_#{self.id}"
+    id_code = IdentificationCode.create(code: code, code_type: 'QR', asset_id: self.id)
+    update_attribute(:identification_code, id_code)
   end
 end

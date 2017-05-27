@@ -23,6 +23,7 @@ gem 'bower-rails', '~> 0.11.0'
 
 gem 'simple_form', '~> 3.4'
 gem 'paperclip'
+gem 'rqrcode'
 
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
@@ -32,7 +33,6 @@ gem 'devise', '~> 4.2.1'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'factory_girl_rails'
-  gem 'faker'
 end
 
 group :development do

@@ -38,6 +38,10 @@ class AssetDisplayManager
       e.preventDefault()
       $(modal).modal('show')
 
+  renderIdCode: (svg, target)->
+    rawSvg = $(svg).text()
+    $(target).replaceWith(rawSvg)
+
 
 $(document).on 'turbolinks:load', () ->
   $('.selectpicker').selectpicker() # Init bootstrap-select
@@ -46,6 +50,7 @@ $(document).on 'turbolinks:load', () ->
   mgr.manageAssetType($ '#asset_type')
 
   displayMgr = new AssetDisplayManager()
+  displayMgr.renderIdCode('#raw-svg', '#id-code')
 
   for s in $('.momentjs')
     displayMgr.initMomentJS s
@@ -64,7 +69,3 @@ $(document).on 'turbolinks:load', () ->
 
   for m in mappings
     displayMgr.registerActions(m[0], m[1])
-
-
-  true
-

@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     resources :technical_details, shallow: true
     resources :network_details, shallow: true
     resources :security_details, shallow: true
-    resources :identification_codes, shallow: true
+    resources :identification_codes, only: [:index, :show] do
+      member do
+        get 'print'
+      end
+    end
     resources :relocations
   end
 
