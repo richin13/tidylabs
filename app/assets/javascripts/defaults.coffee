@@ -1,5 +1,12 @@
 $(document).ready ->
-  if $('.messages').length > 0
+  messages = $('.messages')
+  # we wait until the initial animation is done
+  if messages.length > 0
+    removeAnimation = () ->
+      messages.removeClass('animated').removeClass('slideInDown')
+
+    setTimeout(removeAnimation, 750)
+
     proc = () ->
-      $('.messages').html('')
+      messages.slideUp(750)
     setTimeout(proc, 5000)

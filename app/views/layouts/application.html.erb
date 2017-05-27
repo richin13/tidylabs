@@ -14,20 +14,20 @@
 </head>
 
 <body>
-  <% if user_signed_in? %>
-      <%= render 'layouts/common/navbar' %>
-  <% else %>
-      <%= render 'layouts/common/external_navbar' %>
-  <% end %>
-  <div class="container" id="main-container">
-    <%= render 'layouts/common/messages' %>
-    <div class="col-md-12">
-      <%= yield %>
-    </div>
+<% if user_signed_in? %>
+    <%= render 'layouts/common/navbar' %>
+<% else %>
+    <%= render 'layouts/common/external_navbar' %>
+<% end %>
+<%= render 'layouts/common/messages' %>
+<div class="container" id="main-container">
+  <div class="col-md-12">
+    <%= yield %>
   </div>
-  <% if user_signed_in? %>
-      <%= render 'layouts/common/footer' %>
-  <% end %>
-  <%= javascript_include_tag 'application' %>
+</div>
+<% if user_signed_in? %>
+    <%= render 'layouts/common/footer' %>
+<% end %>
+<%= javascript_include_tag 'application' %>
 </body>
 </html>
