@@ -1,5 +1,7 @@
 class AssetsController < ApplicationController
-  # before_action :authenticate_user!
+  acts_as_token_authentication_handler_for User
+  
+  before_action :authenticate_user!
   before_action :find_asset, :except => [:new, :create, :index]
 
   def index

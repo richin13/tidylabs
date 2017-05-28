@@ -4,7 +4,6 @@
 //= require bootstrap-sprockets
 //= require bootstrap-select/dist/js/bootstrap-select
 //= require bootstrap-toggle/js/bootstrap-toggle.min
-//= require corejs-typeahead/dist/typeahead.bundle
 //= require underscore/underscore
 //= require listjs/dist/list
 //= require moment/moment
