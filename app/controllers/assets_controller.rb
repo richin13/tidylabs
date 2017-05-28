@@ -1,13 +1,23 @@
 class AssetsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :find_asset, :except => [:new, :create, :index]
 
   def index
     @assets = Asset.all
+
+    respond_to do |format|
+        format.html
+        format.json
+    end
   end
 
   def show
     @asset.build_details
+
+    respond_to do |format|
+        format.html
+        format.json
+    end
   end
 
   def new

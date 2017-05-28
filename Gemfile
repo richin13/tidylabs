@@ -29,6 +29,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'devise', '~> 4.2.1'
+gem 'aescrypt'
 
 group :development, :test do
   gem 'byebug', platform: :mri
