@@ -8,3 +8,4 @@ before_script:
   - sudo npm install -g bower
 script:
   - bundle exec rake bower:install
+  - bundle exec rake test
