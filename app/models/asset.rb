@@ -34,8 +34,6 @@ class Asset < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
   validates_presence_of :description, :status, :type, message: 'Este campo es requerido'
 
-  validates :serial_number, uniqueness: { message: 'Ya existe un activo con esa serie' }
-
   validates_inclusion_of :has_warranty, :has_tech_details, :has_network_details,
                          :has_security_details, in: [true, false, nil]
 
