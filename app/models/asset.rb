@@ -26,8 +26,10 @@ class Asset < ApplicationRecord
   accepts_nested_attributes_for :security_detail
   accepts_nested_attributes_for :technical_detail
 
-  has_attached_file :photo, styles: { medium: '300x300>', thumb: '100x100>' },
-                    :default_url => 'defaults/asset_:style.png'
+  has_attached_file :photo, styles: { original: '100%', medium: '300x300#', thumb: '100x100>' },
+                    url: '/system/assets/:id/:attachment/:style/:hash.:extension',
+                    hash_secret: Tydilabs::Application.config.secret_key,
+                    default_url: '/system/defaults/asset_:style.png'
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
   validates_presence_of :description, :status, :type, message: 'Este campo es requerido'
