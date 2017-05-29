@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise', '~> 4.2.1'
 gem 'simple_token_authentication', '~> 1.0'
+gem 'aescrypt'
 
 group :development, :test do
   gem 'byebug', platform: :mri
