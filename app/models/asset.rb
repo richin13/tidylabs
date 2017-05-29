@@ -30,7 +30,7 @@ class Asset < ApplicationRecord
 
   has_attached_file :photo, styles: { original: '100%', medium: '300x300#', thumb: '100x100>' },
                     url: '/system/assets/:id/:attachment/:style/:hash.:extension',
-                    hash_secret: Tydilabs::Application.config.secret_key,
+                    hash_secret: Tydilabs::Application.config.secret_key_base,
                     default_url: '/system/defaults/asset_:style.png'
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
@@ -126,8 +126,8 @@ class Asset < ApplicationRecord
   private
 
   def generate_id_code
-    code = "ocp_activo_#{self.id}"
-    id_code = IdentificationCode.create(code: code, code_type: 'QR', asset_id: self.id)
+    code = "ocp_activo_#{id}"
+    id_code = IdentificationCode.create(code: code, code_type: 'QR', asset_id: id)
     update_attribute(:identification_code, id_code)
   end
 end
