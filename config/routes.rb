@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users
   resources :areas
   resources :categories
+  resources :revisions
   resources :assets do
     resources :warranties, shallow: true
     resources :technical_details, shallow: true

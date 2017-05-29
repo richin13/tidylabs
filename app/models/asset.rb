@@ -8,6 +8,8 @@ class Asset < ApplicationRecord
   has_many :relocations
   has_many :loans
   has_many :support_tickets
+  has_many :asset_revisions
+  has_many :revisions, through: :asset_revisions
 
   belongs_to :area
   belongs_to :asset_category, optional: true

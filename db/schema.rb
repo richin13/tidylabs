@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528054130) do
+ActiveRecord::Schema.define(version: 20170528211208) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 20170528054130) do
     t.text     "common_details"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "asset_revisions", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "asset_id"
+    t.integer  "revision_id"
   end
 
   create_table "assets", force: :cascade do |t|
@@ -109,8 +116,11 @@ ActiveRecord::Schema.define(version: 20170528054130) do
   end
 
   create_table "revisions", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "open",        default: true
   end
 
   create_table "security_details", force: :cascade do |t|
