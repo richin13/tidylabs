@@ -1,6 +1,8 @@
 json.(asset, :id, :serial_number, :description, :plate_number, :quantity, :status)
-json.type asset.type_to_h
-json.photo_url asset.photo.url(:thumb)
+json.type_readable asset.type_to_h
+json.type asset.type
+
+json.photo_url asset.photo.url(:medium)
 
 json.area do
   json.partial! 'assets/partials/area', area: asset.area
