@@ -30,7 +30,7 @@ class Asset < ApplicationRecord
 
   has_attached_file :photo, styles: { original: '100%', medium: '300x300#', thumb: '100x100>' },
                     url: '/system/assets/:id/:attachment/:style/:hash.:extension',
-                    hash_secret: Tydilabs::Application.config.secret_key_base,
+                    hash_secret: Tydilabs::Application.config.secret_key,
                     default_url: '/system/defaults/asset_:style.png'
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
