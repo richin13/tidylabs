@@ -1,5 +1,5 @@
 $(document).ready ->
-  messages = $('.messages')
+  messages = $('.messages .alert')
   # we wait until the initial animation is done
   if messages.length > 0
     removeAnimation = () ->
