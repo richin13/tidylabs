@@ -3,7 +3,7 @@ class AssetsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :find_asset, :except => [:new, :create, :index]
-  skip_before_action :verify_authenticity_token, :only => [:update]
+  skip_before_action :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
 
   def index
     @assets = Asset.all
@@ -41,20 +41,13 @@ class AssetsController < ApplicationController
   end
 
   def update
-    asset_update_params = asset_params
-    image = Paperclip.io_adapters.for(params[:photo])
-    image.original_filename = 'asset_image_from_mobile.png'
-    asset_update_params[:photo] = image
-
-    if @asset.update(asset_update_params)
-      respond_to do |format|
+    respond_to do |format|
+      if @asset.update(asset_params)
         format.html { redirect_to asset_url(@asset), notice: 'Activo actualizado correctamente' }
         format.json { render :show }
-      end
-    else
-      respond_to do |format|
+      else
         format.html { render :edit }
-        format.json { render :show, status: 400 }
+        format.json { render :show, status: :bad_request }
       end
     end
   end
@@ -77,9 +70,17 @@ class AssetsController < ApplicationController
       params[:asset] = params.delete :unplated_asset
     end
 
-    params.require(:asset).permit(:type, :plate_number, :quantity, :description, :serial_number, :area_id, :photo,
+    asset_params = params.require(:asset).permit(:type, :plate_number, :quantity, :description, :serial_number, :area_id, :photo,
                                   :status, :has_warranty, :has_tech_details, :has_security_details, :has_network_details,
                                   :asset_category_id)
+
+    if request.format == 'application/json'
+      image = Paperclip.io_adapters.for(params[:photo])
+      image.original_filename = 'asset_image_from_mobile.png'
+      asset_params[:photo] = image
+    end
+
+    asset_params
   end
 
 end
