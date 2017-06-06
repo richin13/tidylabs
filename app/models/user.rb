@@ -9,14 +9,15 @@ class User < ApplicationRecord
   validates_presence_of :name, :lastname, message: 'Este campo es requerido'
 
   def active_for_authentication?
-    super && can_login?
+    can_login = self.can_login
+    if $request
+      can_login |= $request.format == 'application/json'
+    end
+    super && can_login
   end
 
   def to_s
     "#{self[:name]} #{self[:lastname]}"
   end
 
-  def can_login?
-    self[:can_login]
-  end
 end

@@ -24,10 +24,14 @@ class UsersController < ApplicationController
     @user.can_login = false
     @user.password = Devise.friendly_token.first(8)
 
-    if @user.save
-      redirect_to @user, notice: 'Se creó el colaborador correctamente'
-    else
-      render :new
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'Se creó el colaborador correctamente' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :bad_request }
+      end
     end
   end
 
