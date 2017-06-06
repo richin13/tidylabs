@@ -1,8 +1,12 @@
-ready = () ->
-  if $('.messages').length > 0
-    proc = () ->
-      $('.messages').html('')
-    setTimeout(proc, 5000)
+$(document).ready ->
+  messages = $('.messages')
+  # we wait until the initial animation is done
+  if messages.length > 0
+    removeAnimation = () ->
+      messages.removeClass('animated').removeClass('slideInDown')
 
-$(document).ready(ready)
-$(document).on('turbolinks:load', ready)
+    setTimeout(removeAnimation, 750)
+
+    proc = () ->
+      messages.slideUp(750)
+    setTimeout(proc, 5000)

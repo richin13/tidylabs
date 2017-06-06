@@ -1,5 +1,4 @@
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require bootstrap-select/dist/js/bootstrap-select
@@ -10,7 +9,6 @@
 //= require moment/locale/es
 //= require sweetalert2
 //= require rails-sweetalert2-confirm
-//= require turbolinks
 //= require_tree .
 
 window.sweetAlertConfirmDefaults = {

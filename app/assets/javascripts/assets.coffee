@@ -43,7 +43,7 @@ class AssetDisplayManager
     $(target).replaceWith(rawSvg)
 
 
-$(document).on 'turbolinks:load', () ->
+$(document).ready () ->
   $('.selectpicker').selectpicker() # Init bootstrap-select
 
   mgr = new AssetCreationManager()

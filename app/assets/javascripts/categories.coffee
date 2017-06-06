@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).ready ->
   categoryList = new List('category-list', valueNames: ['name'])
 
   $('#category-list-search').keyup ->
