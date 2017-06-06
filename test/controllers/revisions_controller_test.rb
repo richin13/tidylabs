@@ -3,7 +3,7 @@ require 'test_helper'
 class RevisionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @revision = build(:revision)
-    @user = create(:user)
+    @user = create(:collaborator)
     @auth_headers = { 'X-User-Email': @user.email,
                       'X-User-Token': @user.authentication_token }
   end
