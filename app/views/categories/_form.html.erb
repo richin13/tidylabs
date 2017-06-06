@@ -1,0 +1,54 @@
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.input :name, label: 'Nombre' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.input :description, label: 'Descripción' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default ">
+        <div class="panel-body">
+          <div class="clearfix">
+            <strong>¿Acepta detalles de garantía?</strong>
+            <p>Marque la opción sólo si los activos que vayan a tener esta categoría tienen garantía</p>
+            <span class="float-right">
+              <%= f.input_field :accepts_warranty_details, class: 'toggle', data: {toggle: 'toggle', on: 'Sí', off: 'No'} %>
+            </span>
+          </div>
+          <hr/>
+          <div class="clearfix">
+            <strong>¿Acepta detalles técnicos?</strong>
+            <p>Establece si los activos que posean esta categoría son aptops para tener detalles como
+            cantidad de memoría RAM, nombre del sistema operativo, entre otros.</p>
+            <span class="float-right">
+              <%= f.input_field :accepts_technical_details, class: 'toggle', data: {toggle: 'toggle', on: 'Sí', off: 'No'} %>
+            </span>
+          </div>
+          <hr/>
+          <div class="clearfix">
+            <strong>¿Acepta detalles de red?</strong>
+            <p>Establece si los activos que posean esta categoría son aptops para tener detalles como
+              dirección IP o puerta de enlace. Tome en cuenta que estos detalles son válidos para aquellos
+            equipos que se conecten a la red.</p>
+            <span class="float-right">
+              <%= f.input_field :accepts_network_details, class: 'toggle', data: {toggle: 'toggle', on: 'Sí', off: 'No'} %>
+            </span>
+          </div>
+          <hr/>
+          <div class="clearfix">
+            <strong>¿Acepta detalles de seguridad?</strong>
+            <p>Establece si los activos que posean esta categoría son aptops para tener detalles como
+              nombre de usuario y contraseña.</p>
+            <span class="float-right">
+              <%= f.input_field :accepts_security_details, class: 'toggle', data: {toggle: 'toggle', on: 'Sí', off: 'No'} %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<%= f.submit 'Guardar', class: 'btn btn-success' %>

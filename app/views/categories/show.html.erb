@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="page-header">
+    <div class="pull-right">
+      <%= link_to fa_icon('edit') + ' Editar', edit_category_url(@category.id), class: 'btn btn-sm btn-primary' %>
+    </div>
+    <h1><%= @category.name %>
+      <small><%= "##{@category.id}" %></small>
+    </h1>
+  </div>
+  <div class="col-xs-12 col-sm-9 category-details">
+    <div class="description">
+      <div class="title h4"><strong>Descripción</strong></div>
+      <p><%= @category.description %></p>
+    </div>
+    <div class="accepts">
+      <div class="title h4"><strong>Detalles aceptados</strong></div>
+      <p>Esta categoría <strong>
+        <% unless @category.accepts_warranty_details %>no
+        <% end %> permite</strong> detalles de garantía</p>
+      <p>Esta categoría <strong>
+        <% unless @category.accepts_technical_details %>no
+        <% end %> permite</strong> detalles técnicos</p>
+      <p>Esta categoría <strong>
+        <% unless @category.accepts_network_details %>no
+        <% end %> permite</strong> detalles de red</p>
+      <p>Esta categoría <strong>
+        <% unless @category.accepts_security_details %>no
+        <% end %> permite</strong> detalles de seguridad</p>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528211208) do
+ActiveRecord::Schema.define(version: 20170605224047) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
@@ -26,9 +26,12 @@ ActiveRecord::Schema.define(version: 20170528211208) do
   create_table "asset_categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.text     "common_details"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.boolean  "accepts_warranty_details",  default: false
+    t.boolean  "accepts_technical_details", default: false
+    t.boolean  "accepts_security_details",  default: false
+    t.boolean  "accepts_network_details",   default: false
   end
 
   create_table "asset_revisions", force: :cascade do |t|
@@ -111,7 +114,6 @@ ActiveRecord::Schema.define(version: 20170528211208) do
     t.integer  "to_area_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.boolean  "current"
     t.index ["asset_id"], name: "index_relocations_on_asset_id"
   end
 

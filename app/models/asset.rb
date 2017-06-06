@@ -28,7 +28,7 @@ class Asset < ApplicationRecord
   accepts_nested_attributes_for :security_detail
   accepts_nested_attributes_for :technical_detail
 
-  has_attached_file :photo, styles: { original: '100%', medium: '300x300#', thumb: '100x100>' },
+  has_attached_file :photo, styles: {original: '100%', medium: '300x300#', thumb: '100x100>'},
                     url: '/system/assets/:id/:attachment/:style/:hash.:extension',
                     hash_secret: Tydilabs::Application.config.secret_key,
                     default_url: '/system/defaults/asset_:style.png'
@@ -80,39 +80,47 @@ class Asset < ApplicationRecord
   end
 
   def has_warranty?
-    self[:has_warranty]
+    self[:has_warranty] and self.category.accepts_warranty_details
   end
 
   def has_warranty!
-    self[:has_warranty] = !self.has_warranty?
-    self.save
+    if self.category.accepts_warranty_details
+      self[:has_warranty] = !self.has_warranty?
+      self.save
+    end
   end
 
   def has_tech_details?
-    self[:has_tech_details]
+    self[:has_tech_details] and self.category.accepts_technical_details
   end
 
   def has_tech_details!
-    self[:has_tech_details] = !self.has_tech_details?
-    self.save
+    if self.category.accepts_technical_details
+      self[:has_tech_details] = !self.has_tech_details?
+      self.save
+    end
   end
 
   def has_security_details?
-    self[:has_security_details]
+    self[:has_security_details] and self.category.accepts_security_details
   end
 
   def has_security_details!
-    self[:has_security_details] = !self.has_security_details?
-    self.save
+    if self.category.accepts_security_details
+      self[:has_security_details] = !self.has_security_details?
+      self.save
+    end
   end
 
   def has_network_details?
-    self[:has_network_details]
+    self[:has_network_details] and self.category.accepts_network_details
   end
 
   def has_network_details!
-    self[:has_network_details] = !self.has_network_details?
-    self.save
+    if self.category.accepts_network_details
+      self[:has_network_details] = !self.has_network_details?
+      self.save
+    end
   end
 
   def type_to_h

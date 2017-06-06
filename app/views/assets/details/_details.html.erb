@@ -1,6 +1,14 @@
 <p class="text-justify"><%= @asset.description %></p>
 
-<%= render 'assets/details/details_specs' %>
-<%= render 'assets/details/details_warranty' %>
-<%= render 'assets/details/details_network' %>
-<%= render 'assets/details/details_security' %>
+<% if @asset.category.accepts_technical_details %>
+    <%= render 'assets/details/details_specs' %>
+<% end %>
+<% if @asset.category.accepts_technical_details %>
+    <%= render 'assets/details/details_warranty' %>
+<% end %>
+<% if @asset.category.accepts_technical_details %>
+    <%= render 'assets/details/details_network' %>
+<% end %>
+<% if @asset.category.accepts_technical_details %>
+    <%= render 'assets/details/details_security' %>
+<% end %>
