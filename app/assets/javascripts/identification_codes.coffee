@@ -1,3 +1,3 @@
-$(document).on 'turbolinks:load', ->
+$(document).ready ->
   rawSvg = $('#raw-svg').text()
   $('.id-code').append(rawSvg)
