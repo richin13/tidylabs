@@ -1,6 +1,6 @@
 class IdentificationCodesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_id_code, only: :show
+  before_action :find_id_code, only: :print
   before_action :find_asset
 
   def index
@@ -8,7 +8,8 @@ class IdentificationCodesController < ApplicationController
   end
 
   def print
-    render layout: false
+    id_codes = params[:id_codes].values.flatten.reject(&:blank?)
+    @assets = Asset.find(id_codes)
   end
 
   private

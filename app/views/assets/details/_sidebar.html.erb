@@ -39,11 +39,8 @@
   <hr>
   <p><strong>Código identificación</strong></p>
   <div class="text-center code">
-    <div id="raw-svg" hidden>
-      <%= code_as_svg(@asset.identification_code, size: 3) %>
-    </div>
     <%= link_to(asset_identification_codes_path(@asset)) do %>
-      <object id="id-code"></object>
+      <%= code_as_svg(@asset.identification_code, 3) %>
     <% end %>
   </div>
 </div>

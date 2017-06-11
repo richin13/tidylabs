@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def code_as_svg(id_code, size:)
-    generate_qr_code(id_code).as_svg(module_size: size)
+  def code_as_svg(id_code, size = 4)
+    raw generate_qr_code(id_code).as_svg(module_size: size)
   end
 
   private

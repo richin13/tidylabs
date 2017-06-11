@@ -1,3 +1,3 @@
-$(document).ready ->
-  rawSvg = $('#raw-svg').text()
-  $('.id-code').append(rawSvg)
+$(document).ready -> 
+  # Make QR code responsive
+  $('.id-code svg').attr('viewBox', '1 1 135 135');

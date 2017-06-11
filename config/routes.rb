@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   post 'users/login', to: 'users#login'
+
   resources :users
   resources :areas
   resources :categories
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
     resources :security_details, shallow: true
     resources :identification_codes, only: [:index, :show] do
       member do
-        get 'print'
+        post 'print'
       end
     end
     resources :relocations
