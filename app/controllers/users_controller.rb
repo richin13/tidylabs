@@ -40,6 +40,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user
+        @user.last_sign_in_at = DateTime.now
+        @user.save
         format.json { render json: @user }
       else
         # we need to figure out a way to prevent brute-force attacks!
