@@ -1,3 +1,5 @@
+<% title "Area: #{@assets.first.area.name} | Cant. #{pluralize(@assets.count, 'codigo')}" %>
+
 <div class="row">
   <% @assets.each do |asset| %>
     <div class="col-sm-3 col-md-2 print-box">
