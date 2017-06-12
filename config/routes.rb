@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :areas
   resources :categories
   resources :revisions
+  resources :asset_revisions, only: [:create, :destroy]
   resources :assets do
     resources :warranties, shallow: true
     resources :technical_details, shallow: true

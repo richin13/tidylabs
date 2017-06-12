@@ -2,8 +2,13 @@ class RevisionsController < ApplicationController
   acts_as_token_authentication_handler_for User
   before_action :find_revision, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
+
   def index
-    @revisions = Revision.all
+    respond_to do |format|
+      format.html { @revisions = Revision.all }
+      format.json { @revisions = Revision.where(open: true) }
+    end
   end
 
   def show
