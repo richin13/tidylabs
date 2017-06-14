@@ -1,2 +1,16 @@
-<h1>Defaults#index</h1>
-<p>Find me in app/views/defaults/index.html.erb</p>
+<div class="row">
+  <div class="page-header" style="border: 0;">
+    <h1>Sistema de gestión de activos</h1>
+  </div>
+  <div class="col-xs-12">
+    <% block_per_row = 3 %>
+    <% (@blocks.length / block_per_row).times do |row| %>
+      <div class="row">
+        <% block_per_row.times do |i| %>
+            <% block = @blocks[block_per_row * row + i] %>
+            <%= render 'defaults/partials/cell', url: block[:url], name: block[:name], icon: block[:icon] %>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
