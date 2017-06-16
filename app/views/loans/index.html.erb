@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="page-header">
+    <div class="pull-right">
+      <% unless @asset.loaned? %>
+        <%= link_to fa_icon('plus') + ' Nuevo préstamo', new_asset_loan_path(@asset.id), class: 'btn btn-sm btn-primary' %>
+      <% end %>
+    </div>
+    <h1>Préstamos</h1>
+  </div>
+  <div class="col-xs-12">
+    <%= render 'assets/partials/card', asset: @asset %>
+    <div class="panel panel-default">
+      <ul class="list-group">
+        <% @loans.each do |loan| %>
+          <li class="list-group-item">
+            <a href="<%= url_for asset_loan_url(@asset.id, loan.id) %>">
+              Pŕestamo a <%= loan.applicant_name %>
+              el <%= loan.created_at.strftime('%e/%m/%Y a las %H:%M') %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <%= paginate @loans %>
+  </div>
+</div>

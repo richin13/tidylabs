@@ -1,6 +1,9 @@
 <div class="row">
   <div class="page-header">
     <div class="pull-right">
+      <% unless @asset.loaned? %>
+        <%= link_to fa_icon('plus') + ' Prestar', new_asset_loan_path(@asset.id), class: 'btn btn-sm btn-primary' %>
+      <% end %>
       <%= link_to fa_icon('edit') + ' Editar', edit_asset_url(@asset.id), class: 'btn btn-sm btn-primary' %>
     </div>
     <h1><%= @asset.category.name %> <small>#<%= @asset.id %></small></h1>

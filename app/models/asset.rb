@@ -14,7 +14,7 @@ class Asset < ApplicationRecord
   belongs_to :area
   belongs_to :asset_category, optional: true
 
-  scope :plated,   -> { where(type: 'PlatedAsset') }
+  scope :plated, -> { where(type: 'PlatedAsset') }
   scope :unplated, -> { where(type: 'UnplatedAsset') }
 
   enum status: [:service, :loan, :retired, :maintenance, :unassigned]
@@ -40,16 +40,16 @@ class Asset < ApplicationRecord
                          :has_security_details, in: [true, false, nil]
 
   TYPES = {
-    PlatedAsset: 'Con placa',
-    UnplatedAsset: 'Sin placa'
+      PlatedAsset: 'Con placa',
+      UnplatedAsset: 'Sin placa'
   }.freeze
 
   STATUS = {
-    service: 'En servicio',
-    loan: 'En préstamo',
-    retired: 'Desechado',
-    maintenance: 'En mantenimiento',
-    unassigned: 'Sin asignar'
+      service: 'En servicio',
+      loan: 'En préstamo',
+      retired: 'Desechado',
+      maintenance: 'En mantenimiento',
+      unassigned: 'Sin asignar'
   }.freeze
 
   def self.build_asset
@@ -121,6 +121,14 @@ class Asset < ApplicationRecord
       self[:has_network_details] = !self.has_network_details?
       self.save
     end
+  end
+
+  def loaned?
+    Loan.where(asset_id: self.id, finished: false).count == 1
+  end
+
+  def last_loans(a = 5)
+    Loan.where(asset_id: self.id).order(created_at: :desc).last(a)
   end
 
   def type_to_h

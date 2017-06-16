@@ -27,6 +27,11 @@ Rails.application.routes.draw do
       end
     end
     resources :relocations
+    resources :loans do
+      post 'toggle', on: :member
+    end
+
+    get 'search', on: :collection
   end
 
   get 'collaborators', to: 'users#index'

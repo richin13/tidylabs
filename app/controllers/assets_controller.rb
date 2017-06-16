@@ -2,7 +2,7 @@ class AssetsController < ApplicationController
   acts_as_token_authentication_handler_for User
 
   before_action :authenticate_user!
-  before_action :find_asset, :except => [:new, :create, :index]
+  before_action :find_asset, :except => [:new, :create, :index, :search]
   skip_before_action :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
 
   def index
@@ -57,6 +57,17 @@ class AssetsController < ApplicationController
     redirect_to assets_path
   end
 
+  def search
+    query = params[:q]
+    @assets = Asset.where('description LIKE :description or plate_number = :plate_number',
+                          {description: "%#{query}%", plate_number: query})
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   private
 
   def find_asset
@@ -71,8 +82,8 @@ class AssetsController < ApplicationController
     end
 
     asset_params = params.require(:asset).permit(:type, :plate_number, :quantity, :description, :serial_number, :area_id, :photo,
-                                  :status, :has_warranty, :has_tech_details, :has_security_details, :has_network_details,
-                                  :asset_category_id)
+                                                 :status, :has_warranty, :has_tech_details, :has_security_details, :has_network_details,
+                                                 :asset_category_id)
 
     if request.format == 'application/json'
       image = Paperclip.io_adapters.for(params[:photo])

@@ -134,3 +134,6 @@ a.logout {
   transition: height 200ms ease-in;
 }
 
+.text-small {
+  @extend small
+}

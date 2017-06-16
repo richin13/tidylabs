@@ -1,0 +1,6 @@
+<strong>Found a total of <%= @assets.length %> assets</strong>
+<ul>
+  <% @assets.each do |a| %>
+    <li><%= a.description %></li>
+  <% end %>
+</ul>
