@@ -11,7 +11,7 @@ class Asset < ApplicationRecord
   has_many :asset_revisions
   has_many :revisions, through: :asset_revisions
 
-  belongs_to :area
+  belongs_to :area, counter_cache: true
   belongs_to :asset_category, optional: true
 
   scope :plated,   -> { where(type: 'PlatedAsset') }

@@ -21,7 +21,7 @@
       <div class="col-md-8 col-xs-6">
         <p class="in-line"><strong><%= @area.name.capitalize %></strong></p>
         <ul class="list-inline">
-          <li><%= fa_icon "cubes fw", text: @area.assets.count %> activos</li>
+          <li><%= fa_icon "cubes fw", text: @area.assets.size %> activos</li>
           <li><%= fa_icon "cog fw" %> <%= render "manage_menu" %> </li>
         </ul>
       </div>
