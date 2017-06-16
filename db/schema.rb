@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605224047) do
+ActiveRecord::Schema.define(version: 20170614171019) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
@@ -91,8 +91,9 @@ ActiveRecord::Schema.define(version: 20170605224047) do
     t.date     "return_date"
     t.string   "observations"
     t.integer  "asset_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "finished",       default: false
     t.index ["asset_id"], name: "index_loans_on_asset_id"
   end
 
