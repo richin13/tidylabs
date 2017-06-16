@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170614171019) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "assets_count"
   end
 
   create_table "asset_categories", force: :cascade do |t|

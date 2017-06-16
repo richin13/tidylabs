@@ -8,6 +8,7 @@ json.assets revision.asset_revisions do |rev|
   json.plate_number  asset.plate_number
   json.quantity      asset.quantity
 
-  json.type asset.type
-  json.url  asset_url(asset, format: :json)
+  json.type          asset.type
+  json.type_readable asset.type_to_h
+  json.url           asset_url(asset, format: :json)
 end
