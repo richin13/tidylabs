@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="page-header">
+    <h1>Préstamos</h1>
+  </div>
+  <div class="col-xs-12 col-sm-10 center-block">
+    <% @loans.each do |loan| %>
+      <%= render 'loans/cards/compact', loan: loan %>
+    <% end %>
+    <small>Mostrando 5 de <%= Loan.count %>. Los más recientes primero.</small>
+    <div class="text-center">
+      <%= paginate @loans %>
+    </div>
+  </div>
+</div>

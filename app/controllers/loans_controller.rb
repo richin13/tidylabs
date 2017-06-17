@@ -1,5 +1,5 @@
 class LoansController < ApplicationController
-  before_action :find_asset
+  before_action :find_asset, except: [:all]
   before_action :find_loan, only: [:show, :toggle]
 
   def index
@@ -29,6 +29,10 @@ class LoansController < ApplicationController
   def toggle
     @loan.toggle
     redirect_to asset_loan_path(@asset.id, @loan.id), notice: 'Se registró el cambio correctamente'
+  end
+
+  def all
+    @loans = Loan.order(created_at: :desc).page params[:page]
   end
 
   private

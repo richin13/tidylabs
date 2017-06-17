@@ -41,4 +41,8 @@ Rails.application.routes.draw do
 
     get 'search', on: :collection
   end
+
+  get 'loans', to: 'loans#all', as: :loans
+  # get 'tickets', to: 'loans#all', as: :loans
+  
 end
