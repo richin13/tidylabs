@@ -7,7 +7,7 @@ class DefaultsController < ApplicationController
       { url: assets_path, name: 'Activos', icon: 'desktop' },
       { url: revisions_path, name: 'Revisiones', icon: 'calendar-check-o' },
       { url: loans_path, name: 'Préstamos', icon: 'handshake-o' },
-      { url: root_path, name: 'Mantenimiento', icon: 'ticket' },
+      { url: categories_path, name: 'Categorías', icon: 'folder-o' },
       { url: users_path, name: 'Colaboradores', icon: 'users' },
       { url: root_path, name: 'Reportes', icon: 'file-pdf-o' },
       { url: app_path, name: 'Móvil', icon: 'android' },
