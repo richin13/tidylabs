@@ -25,6 +25,9 @@ class AssetsController < ApplicationController
 
   def new
     @asset = Asset.new
+    if params[:area].present?
+      @asset.area_id = params[:area]
+    end
   end
 
   def edit

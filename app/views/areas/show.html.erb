@@ -1,6 +1,12 @@
+<% title "Área: #{@area.name}" %>
 <div class="row">
  <div class="page-header">
-   <h1>Area <%= @area.name.capitalize %></h1>
+   <div class="pull-right">
+     <%= link_to new_asset_path(area: @area.id), class: 'btn btn-primary btn-sm' do %>
+      <%= fa_icon 'plus' %> Nuevo activo
+     <% end %>
+   </div>
+   <h1><%= @area.name.capitalize %></h1>
  </div>
 
  <div class="col-md-8" id="asset-list">

@@ -1,8 +1,13 @@
-<div class="col-xs-12 col-sm-10 col-md-8 center-block">
-  <h1>Editar garantía</h1>
-  <hr>
-  <%= simple_form_for @warranty do |f| %>
-    <%= render 'warranties/forms/fields', f: f %>
-    <%= f.submit 'Guardar', class: 'btn btn-success' %>
-  <% end %>
+<% title 'Editar la garantía' %>
+<div class="row">
+  <div class="page-header">
+    <h1>Editar la garantía</h1>
+  </div>
+  <div class="col-xs-12 col-sm-10 col-md-8 center-block">
+    <%= render 'assets/partials/card', asset: @warranty.asset %>
+    <%= simple_form_for @warranty do |f| %>
+        <%= render 'warranties/forms/fields', f: f %>
+        <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 </div>

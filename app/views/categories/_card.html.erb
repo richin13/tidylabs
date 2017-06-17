@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-xs-12 col-sm-2">
+      <%= fa_icon 'folder-o 5x' %>
+    </div>
+    <div class="col-xs-12 col-sm-10">
+      <div class="row">
+        <div class="col-xs-12">
+          <h4><%= link_to category.name, category_path(category.id) %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 text-small">
+          <ul class="list-inline">
+            <li>
+              <%= fa_icon 'comment' %>
+              <strong>Descripción:</strong> <%= category.description %>
+            </li>
+            <li>
+              <%= fa_icon 'cubes' %>
+              <strong>Activos:</strong> <%= category.assets.count %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

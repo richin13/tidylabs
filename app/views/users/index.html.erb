@@ -1,32 +1,31 @@
+<% title 'Colaboradores' %>
 <div class="row">
   <div class="page-header">
-    <div class="col-xs-2 pull-right text-right">
+    <div class="pull-right">
       <%= link_to fa_icon('plus') + ' Nuevo colaborador', new_user_path, class: 'btn btn-primary btn-sm' %>
     </div>
-    <h1>Colaboradores
-      <small><%= @users.count %></small>
-    </h1>
+    <h1>Colaboradores</h1>
   </div>
 
   <div class="col-xs-12">
     <!-- ul for searching with list js -->
     <ul class="list-unstyled list">
       <% @users.each do |user| %>
-          <li>
-            <div class="col-md-3 col-equal">
-              <div class="panel panel-default panel-equal">
-                <div class="panel-body">
-                  <%= link_to user do %>
-                      <h4 class="fullname"><%= user.name.capitalize %> <%= user.lastname.capitalize %></h4>
-                  <% end %>
-                  <p><%= fa_icon('user') %> <%= user.can_login? ? 'Administrador' : 'Colaborador' %></p>
-                  <p><%= fa_icon('id-badge') %> Pin: <%= user.pin ? user.pin : 'Ninguno' %></p>
-                  <% lsi = user.last_sign_in_at %>
-                  <p><%= fa_icon('calendar') %> Último ingreso: <span class="momentjs" data-date="<%= lsi ? lsi.strftime('%Y-%m-%d %H:%M:%S') : '' %>"></span></p>
-                </div>
+        <li>
+          <div class="col-md-3 col-equal">
+            <div class="panel panel-default panel-equal">
+              <div class="panel-body">
+                <%= link_to user do %>
+                  <h4 class="fullname"><%= user.name.capitalize %> <%= user.lastname.capitalize %></h4>
+                <% end %>
+                <p><%= fa_icon('user') %> <%= user.can_login? ? 'Administrador' : 'Colaborador' %></p>
+                <p><%= fa_icon('id-badge') %> Pin: <%= user.pin ? user.pin : 'Ninguno' %></p>
+                <% lsi = user.last_sign_in_at %>
+                <p><%= fa_icon('calendar') %> Último ingreso: <span class="momentjs" data-date="<%= lsi ? lsi.strftime('%Y-%m-%d %H:%M:%S') : '' %>"></span></p>
               </div>
             </div>
-          </li>
+          </div>
+        </li>
       <% end %>
     </ul>
   </div>

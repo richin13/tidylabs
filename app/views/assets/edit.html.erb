@@ -1,7 +1,11 @@
-<div class="col-xs-12 col-sm-10 col-md-8 center-block">
-  <h1>Editar activo <%= link_to "##{@asset.id}", asset_url(@asset.id) %></h1>
-  <hr>
-  <%= simple_form_for @asset, url: asset_path(@asset.id) do |f| %>
+<% title "Editar activo ##{@asset.id}" %>
+<div class="row">
+  <div class="page-header">
+    <h1>Editar activo</h1>
+  </div>
+  <div class="col-xs-12 col-sm-10 col-md-8 center-block">
+    <%= simple_form_for @asset, url: asset_path(@asset.id) do |f| %>
       <%= render 'assets/forms/create', f: f %>
-  <% end %>
+    <% end %>
+  </div>
 </div>
