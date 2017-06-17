@@ -1,15 +1,13 @@
 <div class="row">
-  <div class="page-header" style="border: 0;">
-    <h1>Sistema de gestión de activos</h1>
+  <div class="col-md-12">
+    <div class="page-header">
+      <h1>Sistema de gestión de activos</h1>
+    </div>
   </div>
-  <div class="col-xs-12">
-    <% block_per_row = 3 %>
-    <% (@blocks.length / block_per_row).times do |row| %>
-      <div class="row">
-        <% block_per_row.times do |i| %>
-            <% block = @blocks[block_per_row * row + i] %>
-            <%= render 'defaults/partials/cell', url: block[:url], name: block[:name], icon: block[:icon] %>
-      <% end %>
+  <div class="col-md-12">
+    <% @blocks.each do |block| %>
+      <div class="col-md-4">
+        <%= render 'defaults/partials/cell', url: block[:url], name: block[:name], icon: block[:icon] %>
       </div>
     <% end %>
   </div>

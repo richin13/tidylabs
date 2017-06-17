@@ -1,7 +1,5 @@
 @import "application";
 
-$inverse: #222;
-
 .index-cell a {
   color: #fff;
 }
@@ -11,7 +9,6 @@ $inverse: #222;
 }
 
 .index-cell a .panel {
-  background: $inverse;
   border-radius: 0;
   padding: 1.5rem 0;
 }
