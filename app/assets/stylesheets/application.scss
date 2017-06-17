@@ -32,8 +32,8 @@ $brand-warning: $yellow-ucr;
 $brand-danger: $orange-ucr;
 
 // Links
-$link-color: $light-blue-ucr;
-$link-hover-color: $blue-ucr;
+//$link-hover-color: $light-blue-ucr;
+//$link-color: $blue-ucr;
 $link-hover-decoration: none;
 
 @import "bootstrap-sprockets";
@@ -69,13 +69,13 @@ body {
   transition: border-bottom .1s ease-in;
 }
 
-.navbar-ucr .navbar-nav > li > a:hover {
-  background: none;
-}
-
-.navbar-ucr .navbar-nav > li > a:hover:before {
-  transform: scaleX(1);
-}
+//.navbar-ucr .navbar-nav > li > a:hover {
+//  background: none;
+//}
+//
+//.navbar-ucr .navbar-nav > li > a:hover:before {
+//  transform: scaleX(1);
+//}
 
 .navbar-brand {
   padding: 0;
@@ -136,4 +136,8 @@ a.logout {
 
 .text-small {
   @extend small
+}
+
+.black.a a {
+  color: #000;
 }
