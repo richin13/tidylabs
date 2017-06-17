@@ -35,6 +35,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user.id), notice: 'Se actualizó el colaborador correctamente'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    unless @user.admin?
+      @user.destroy
+      redirect_to users_path, notice: 'Se eliminó el colaborador correctamente'
+    else
+      redirect_to root_path, alert: 'No se puede eliminar la cuenta de administrador'
+    end
+  end
+
   def login
     @user = User.find_by_pin(params[:pin])
 

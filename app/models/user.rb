@@ -16,6 +16,10 @@ class User < ApplicationRecord
     super && can_login
   end
 
+  def admin?
+    self.can_login
+  end
+
   def to_s
     "#{self[:name]} #{self[:lastname]}"
   end
