@@ -1,8 +1,13 @@
 <% title 'Categorías' %>
 <div class="row">
   <div class="page-header">
-    <div class="col-md-2 pull-right">
-      <input class="form-control input-sm" placeholder="Buscar categoria" id="category-list-search">
+    <div class="pull-right">
+      <div class="form-inline">
+        <%= link_to new_category_path, class: 'btn btn-primary btn-sm' do %>
+            <%= fa_icon 'plus' %> Nueva categoría
+        <% end %>
+        <input class="form-control input-sm" placeholder="Buscar categoria" id="category-list-search">
+      </div>
     </div>
     <h1>Categorías</h1>
   </div>
