@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="page-header">
+    <div class="pull-right">
+      <a href="<%= url_for app_download_path %>" class="btn btn-primary"><%= fa_icon('download') %> Descargar</a>
+    </div>
+    <h1>Aplicación móvil</h1>
+  </div>
+  <div class="col-xs-12 col-sm-10 center-block">
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        <%= image_tag 'app1.jpg', class: 'img-responsive' %>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <%= image_tag 'app2.jpg', class: 'img-responsive' %>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <%= image_tag 'app3.jpg', class: 'img-responsive' %>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12">
+        <p>La aplicación móvil permite un acceso rápido y portable a la información de cada activo por medio
+          de un escaneo rápido al código QR del activo.</p>
+        <p>Además permite subir nuevas fotos de activos tomadas directamente con el dispositivo móvil</p>
+        <p>Otra característica que posee la aplicación es la de registrar un activo en una revisión
+          periódica previamente iniciada por un administrador.</p>
+
+        <h3>Instrucciones</h3>
+        <ul class="list-unstyled">
+          <li>Descargue la aplicación con el botón
+            <span class="label label-primary"><%= fa_icon('download') %> Descargar</span> ubicado en la parte superior
+            derecha de esta pantalla
+          </li>
+          <li>Conecte su dispositivo y transfiera el archivo descargado.</li>
+          <li>Configure la aplicación con la dirección IP
+            <strong><%= Socket.ip_address_list.detect(&:ipv4_private?).try(:ip_address) %></strong></li>
+          <li>Ingrese con su PIN</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

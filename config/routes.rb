@@ -44,5 +44,8 @@ Rails.application.routes.draw do
 
   get 'loans', to: 'loans#all', as: :loans
   # get 'tickets', to: 'loans#all', as: :loans
-  
+
+  get 'app', to: 'defaults#app', as: :app
+  get 'app/download', to: 'defaults#download', as: :app_download
+  get 'help', to: 'defaults#help', as: :help
 end
