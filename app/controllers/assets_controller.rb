@@ -6,7 +6,7 @@ class AssetsController < ApplicationController
   skip_before_action :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
 
   def index
-    @assets = Asset.all
+    @assets = Asset.order(created_at: :desc).page(params[:page]).per 6
 
     respond_to do |format|
       format.html
@@ -61,14 +61,11 @@ class AssetsController < ApplicationController
   end
 
   def search
-    query = params[:q]
+    @query = params[:q]
     @assets = Asset.where('description LIKE :description or plate_number = :plate_number',
-                          {description: "%#{query}%", plate_number: query})
+                          {description: "%#{@query}%", plate_number: @query}).page(params[:page]).per 6
 
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    render :index
   end
 
   private
