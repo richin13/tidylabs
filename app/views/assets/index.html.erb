@@ -8,6 +8,9 @@
     <div class="pull-right">
       <form action="<%= url_for search_assets_path %>" class="form-inline">
         <div class="form-group">
+          <%= link_to new_asset_path, class: 'btn btn-primary btn-sm' do %>
+            <%= fa_icon 'plus' %> Nuevo activo
+          <% end %>
           <input class="form-control input-sm" type="text" placeholder="Buscar" name="q" value="<%= @query %>"/>
           <button type="submit" class="btn btn-default"><%= fa_icon 'search' %></button>
         </div>
