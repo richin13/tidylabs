@@ -48,4 +48,5 @@ Rails.application.routes.draw do
   get 'app', to: 'defaults#app', as: :app
   get 'app/download', to: 'defaults#download', as: :app_download
   get 'help', to: 'defaults#help', as: :help
+  get 'status', to: 'defaults#status', as: :status
 end

@@ -1,5 +1,5 @@
 class DefaultsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:status]
 
   def index
     @blocks = [
@@ -25,5 +25,12 @@ class DefaultsController < ApplicationController
 
   def help
 
+  end
+
+  def status
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 end
