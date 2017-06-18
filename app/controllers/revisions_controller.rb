@@ -26,7 +26,7 @@ class RevisionsController < ApplicationController
 
     respond_to do |format|
       if @revision.save
-        format.html { redirect_to @revision, notice: 'Revision was successfully created.' }
+        format.html { redirect_to @revision, notice: 'Revision creada satisfactoriamente' }
         format.json { render :show, status: :created, location: @revision }
       else
         format.html { render :new }
@@ -38,7 +38,7 @@ class RevisionsController < ApplicationController
   def update
     respond_to do |format|
       if @revision.update(revision_params)
-        format.html { redirect_to @revision, notice: 'Revision was successfully updated.' }
+        format.html { redirect_to @revision, notice: 'Revision actualizada correctamente' }
         format.json { render :show, status: :ok, location: @revision }
       else
         format.html { render :edit }
@@ -50,7 +50,7 @@ class RevisionsController < ApplicationController
   def destroy
     @revision.destroy
     respond_to do |format|
-      format.html { redirect_to revisions_url, notice: 'Revision was successfully destroyed.' }
+      format.html { redirect_to revisions_url, notice: 'Revision fue borrada correctamente' }
       format.json { head :no_content }
     end
   end
@@ -62,6 +62,6 @@ class RevisionsController < ApplicationController
     end
 
     def revision_params
-      params.require(:revision).permit(:name, :description)
+      params.require(:revision).permit(:name, :description, :open)
     end
 end

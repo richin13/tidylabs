@@ -13,6 +13,7 @@ class AssetRevisionsController < ApplicationController
 
     respond_to do |format|
       if @asset_revision.save
+        revision.touch
         format.json { render :show, status: :created, location: @asset_revision }
       else
         format.json { render json: @asset_revision.errors, status: :unprocessable_entity }
@@ -23,6 +24,7 @@ class AssetRevisionsController < ApplicationController
   def destroy
     @asset_revision.destroy
     respond_to do |format|
+      format.html { redirect_to @asset_revision.revision, notice: 'Activo borrado de revision' }
       format.json { head :no_content }
     end
   end
