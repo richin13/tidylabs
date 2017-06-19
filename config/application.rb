@@ -23,5 +23,6 @@ module Tydilabs
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = 'America/Costa_Rica'
+    config.i18n.default_locale = :es
   end
 end
