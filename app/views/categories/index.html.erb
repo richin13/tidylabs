@@ -1,38 +1,42 @@
+<% title 'Categorías' %>
 <div class="row">
- <div class="page-header">
-  <div class="col-md-2 pull-right">
-    <input class="form-control input-sm" placeholder="Buscar categoria" id="category-list-search">
-  </div>
-  <h1>Categorias <small><%= @categories.count %></small></h1>
- </div>
-
- <div class="col-md-12" id="category-list">
-  <% if @categories.empty? %>
-    <div class="text-center">
-      <p>No existen categorias registradas, puede crear una nueva categoria <%= link_to "aqui", new_category_path %></p>
+  <div class="page-header">
+    <div class="pull-right">
+      <div class="form-inline">
+        <%= link_to new_category_path, class: 'btn btn-primary btn-sm' do %>
+            <%= fa_icon 'plus' %> Nueva categoría
+        <% end %>
+        <input class="form-control input-sm" placeholder="Buscar categoria" id="category-list-search">
+      </div>
     </div>
-  <% end %>
+    <h1>Categorías</h1>
+  </div>
 
-  <!-- ul for searching with list js -->
-  <ul class="list-unstyled list">
-    <% @categories.each do |category| %>
-      <li>
-        <div class="col-md-3 col-equal">
-         <div class="panel panel-default panel-equal">
-           <div class="panel-body">
-            <%= link_to category_path(category) do %>
-              <h4 class="name" title="<%= category.name.capitalize %>">
-                <%= truncate(category.name.capitalize, length: 14, separator: "...") %>
-              </h4>
-            <% end %>
-            <p><%= truncate(category.description, length: 30, separator: "...") %></p>
-
-            <%= fa_icon "cubes fw", text: category.assets.count, title: "Activos" %>
-           </div>
-         </div>
+  <div class="col-md-12" id="category-list">
+    <% if @categories.empty? %>
+        <div class="text-center">
+          <p>No existen categorias registradas, puede crear una nueva
+            categoria <%= link_to 'aquí', new_category_path %></p>
         </div>
-      </li>
     <% end %>
-   </ul>
- </div>
+    <ul class="list-unstyled list">
+      <% @categories.each do |category| %>
+        <li>
+          <div class="col-md-3 col-equal">
+            <div class="panel panel-default panel-equal">
+              <div class="panel-body">
+                <%= link_to category_path(category) do %>
+                    <h4 class="name" title="<%= category.name.capitalize %>">
+                      <%= truncate(category.name.capitalize, length: 14, separator: '...') %>
+                    </h4>
+                <% end %>
+                <p><%= truncate(category.description, length: 30, separator: '...') %></p>
+                <%= fa_icon 'cubes fw', text: category.assets.count, title: 'Activos' %>
+              </div>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

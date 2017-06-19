@@ -1,3 +1,32 @@
-// Place all the styles related to the IdentificationCodes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.actions tr td:nth-child(odd) {
+  font-weight: bold;
+}
+
+.id-code {
+  text-align: center;
+}
+
+.id-code svg {
+  height: 100%;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.print-box {
+  padding-right: 20px;
+  padding-left: 20px;
+  border: 1px solid black;
+}
+
+.cut-here-helper {
+  margin: 0 -16px 0 -16px;
+  padding: 10px 16px 0 16px;
+
+  border-top: 1px solid black;
+}
+
+@media print {
+  .footer {
+    display: none;
+  }
+}

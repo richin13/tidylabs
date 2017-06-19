@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="page-header">
+    <div class="pull-right">
+      <%= link_to edit_revision_path(@revision), class: 'btn btn-primary btn-sm' do %>
+          <%= fa_icon 'pencil' %> Editar revision
+      <% end %>
+    </div>
+    <h1><%= @revision.name %></h1>
+  </div>
+
+  <div class="col-md-12 text-small">
+    <ul class="list-inline">
+      <li>
+        <%= fa_icon @revision.open ? 'unlock' : 'lock' %>
+        <strong>Abierta:</strong> <%= @revision.open ? 'Si' : 'No' %>
+      </li>
+      <li>
+        <%= fa_icon 'calendar' %>
+        <strong>Creada:</strong> <%= time_ago_in_words(@revision.created_at) %>
+      </li>
+      <li>
+        <%= fa_icon 'list' %>
+        <strong>Ultima edicion:</strong> <%= time_ago_in_words(@revision.updated_at) %>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-md-12 description">
+    <p class="text-justify"><%= @revision.description || 'No hay descripcion disponible' %></p>
+  </div>
+
+  <div class="col-md-12">
+    <div class="page-header">
+      <h3>Activos registrados <small>(<%= @revision.asset_revisions.count %>)</small></h3>
+    </div>
+    <div class="col-md-8 col-md-offset-2" id="asset-list">
+      <%= render "asset_list" %>
+    </div>
+  </div>
+</div>

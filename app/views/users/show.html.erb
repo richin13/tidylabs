@@ -1,0 +1,30 @@
+<% title "Detalles del usuario #{@user.to_s}" %>
+<div class="row">
+  <div class="page-header">
+    <div class="pull-right">
+      <%= link_to edit_user_path, class: 'btn btn-primary btn-sm' do %>
+        <%= fa_icon 'edit' %> Editar
+      <% end %>
+      <% unless @user.admin? %>
+        <%= link_to user_path(@user.id), class: 'btn btn-danger btn-sm', method: :delete do %>
+            <%= fa_icon 'trash' %> Eliminar
+        <% end %>
+      <% end %>
+    </div>
+    <h1><%= @user.name %>
+      <small><%= @user.lastname %></small>
+    </h1>
+  </div>
+  <div class="col-xs-12 col-sm-10 col-md-8 center-block">
+    <% if @user.admin? %>
+      <div class="alert alert-info">
+        <%= fa_icon 'info' %> Este usuario es el administrador del sistema.
+      </div>
+        <%= link_to 'Cambiar la contraseña', edit_user_registration_path %>
+    <% end %>
+    <ul class="list-unstyled">
+      <li><strong>Correo electrónico:</strong> <%= @user.email %></li>
+      <li><strong>PIN de ingreso:</strong> <%= @user.pin.present? ? @user.pin : 'Sin PIN de ingreso' %></li>
+    </ul>
+  </div>
+</div>

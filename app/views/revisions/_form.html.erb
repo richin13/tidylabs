@@ -1,0 +1,11 @@
+<%= simple_form_for(@revision) do |f| %>
+  <%= f.input :name, label: 'Nombre' %>
+  <%= f.input :description, label: 'Descripción' %>
+  <div class="clearfix">
+    <strong>Estado</strong>
+    <span class="float-right">
+      <%= f.input_field :open, label: 'Estado', class: 'toggle', data: { toggle: 'toggle', on: 'Abierta', off: 'Cerrada' } %>
+    </span>
+  </div>
+  <%= f.button :submit, 'Guardar', class: 'btn-primary' %>
+<% end %>

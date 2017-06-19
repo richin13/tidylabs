@@ -1,0 +1,19 @@
+<h2>Préstamos</h2>
+<% last_longs = @asset.last_loans %>
+<% if last_longs.length > 0 %>
+  <div class="panel panel-default">
+    <ul class="list-group">
+      <% last_longs.each do |loan| %>
+          <li class="list-group-item">
+            <a href="<%= url_for asset_loan_url(@asset.id, loan.id) %>">
+              Pŕestamo a <%= loan.applicant_name %>
+              el <%= loan.created_at.strftime('%e/%m/%Y a las %H:%M') %>
+            </a>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+  <%= link_to 'Ver todos', asset_loans_path(@asset.id) %>
+<% else %>
+  <div class="alert alert-info">El activo nunca se ha prestado</div>
+<% end %>

@@ -10,25 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521195127) do
+ActiveRecord::Schema.define(version: 20170617175955) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "assets_count",       default: 0
   end
 
   create_table "asset_categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.text     "common_details"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.boolean  "accepts_warranty_details",  default: false
+    t.boolean  "accepts_technical_details", default: false
+    t.boolean  "accepts_security_details",  default: false
+    t.boolean  "accepts_network_details",   default: false
+  end
+
+  create_table "asset_revisions", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "asset_id"
+    t.integer  "revision_id"
   end
 
   create_table "assets", force: :cascade do |t|
@@ -63,7 +74,7 @@ ActiveRecord::Schema.define(version: 20170521195127) do
 
   create_table "identification_codes", force: :cascade do |t|
     t.string   "code"
-    t.string   "type"
+    t.string   "code_type"
     t.integer  "asset_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -81,8 +92,9 @@ ActiveRecord::Schema.define(version: 20170521195127) do
     t.date     "return_date"
     t.string   "observations"
     t.integer  "asset_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "finished",       default: false
     t.index ["asset_id"], name: "index_loans_on_asset_id"
   end
 
@@ -108,8 +120,11 @@ ActiveRecord::Schema.define(version: 20170521195127) do
   end
 
   create_table "revisions", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "open",        default: true
   end
 
   create_table "security_details", force: :cascade do |t|
@@ -143,19 +158,24 @@ ActiveRecord::Schema.define(version: 20170521195127) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                             default: "",   null: false
+    t.string   "encrypted_password",                default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                     default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.integer  "pin"
+    t.string   "name"
+    t.string   "lastname"
+    t.boolean  "can_login",                         default: true
+    t.string   "authentication_token",   limit: 30
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

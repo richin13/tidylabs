@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <%= f.input :name, label: 'Nombre' %>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <%= f.input :lastname, label: 'Apellido(s)' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <%= f.input :email, label: 'Correo electrónico' %>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <%= f.input :pin, label: 'PIN', as: :string %>
+  </div>
+</div>
+<%= f.submit 'Guardar', class: 'btn btn-primary' %>
+
+

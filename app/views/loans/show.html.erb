@@ -1,0 +1,43 @@
+<% title "Pŕestamo #{@loan.id}" %>
+<div class="row">
+  <div class="page-header">
+    <h1>Pŕestamo <%= @loan.id %></h1>
+  </div>
+  <div class="col-xs-12 col-sm-8 center-block loan-details">
+    <%= render 'assets/partials/card', asset: @asset %>
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <td colspan="2">Solicitante</td>
+          <td colspan="2" class="text-center"><%= @loan.applicant_name %></td>
+        </tr>
+        <tr>
+          <td>Identificación</td>
+          <td class="text-center"><%= @loan.applicant_dni %></td>
+          <td>Teléfono</td>
+          <td class="text-center"><%= @loan.phone_number %></td>
+        </tr>
+        <tr>
+          <td colspan="2">Prestado hasta</td>
+          <td colspan="2"><%= @loan.return_date.strftime('%d/%m/%Y') %></td>
+        </tr>
+        <tr>
+          <td colspan="2">Observaciones</td>
+          <td colspan="2"><%= @loan.observations %></td>
+        </tr>
+        <tr>
+          <td colspan="2">Entregado?</td>
+          <td colspan="2"><%= @loan.finished ? 'Sí' : 'No' %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="pull-right">
+      <form action="<%= url_for toggle_asset_loan_path(@asset.id, @loan.id) %>" method="post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+        <button type="submit" class="btn btn-primary">
+          Marcar como<%= @loan.finished ? ' no' : '' %> entregado
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

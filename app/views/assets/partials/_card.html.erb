@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-body">
+    <div class="card-icon">
+      <%= fa_icon 'desktop 4x' %>
+    </div>
+    <div class="card-content">
+      <div class="col-xs-12">
+        <h4><%= link_to asset.description, asset_path(asset.id) %></h4>
+      </div>
+      <div class="col-xs-12 text-small">
+        <ul class="list-inline">
+          <li>
+            <%= fa_icon 'shield' %>
+            <strong>Placa:</strong> <%= asset.plate_number ? asset.plate_number : 'Sin placa' %>
+          </li>
+          <li>
+            <%= fa_icon 'barcode' %>
+            <strong>Serie:</strong> <%= asset.serial_number ? asset.serial_number : 'Sin serie' %>
+          </li>
+          <li>
+            <%= fa_icon 'sticky-note' %>
+            <strong>Estado:</strong> <%= asset.status_to_h %>
+          </li>
+          <li>
+            <%= fa_icon 'folder-o' %>
+            <strong>Categoría:</strong> <%= asset.category.name %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

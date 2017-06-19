@@ -1,0 +1,46 @@
+<% title 'Aplicación móvil' %>
+<div class="row">
+  <div class="page-header">
+    <div class="pull-right">
+      <a href="<%= url_for app_download_path %>" class="btn btn-primary"><%= fa_icon('download') %> Descargar</a>
+    </div>
+    <h1>Aplicación móvil</h1>
+  </div>
+  <div class="col-xs-12 col-sm-10 center-block">
+    <% @screenshots.each do |screen| %>
+      <div class="col-xs-12 col-sm-3">
+        <%= image_tag "mobile_app/#{File.basename(screen)}", class: 'img-responsive' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-xs-12">
+    <hr>
+    <p>La aplicación móvil permite un acceso rápido y portable a la información de cada activo por medio
+      de un escaneo rápido al código QR del activo. Algunas características de la aplicación incluyen:
+      <ul>
+        <li>Permite actualizar la foto de un activo tomadas directamente con la camara del dispositivo</li>
+        <li>Agregar activos a revisiones previamente iniciadas por el administrador</li>
+      </ul>
+    </p>
+    <hr>
+  </div>
+  <div class="col-xs-12">
+    <h2>Instrucciones de instalación</h2>
+    <ol>
+      <li>
+        Descargue la aplicación haciendo click en el botón
+        <span class="label label-primary"><%= fa_icon('download') %> Descargar</span> ubicado en la parte superior
+        derecha de la pantalla
+      </li>
+      <li>
+        Conecte su dispositivo y transfiera el archivo descargado.
+        <a href="http://www.techbout.com/install-apk-files-pc-android-3323/" target="_blank">Ayuda</a>
+      </li>
+      <li>
+        Configure la aplicación con la dirección IP
+        <strong><%= Socket.ip_address_list.detect(&:ipv4_private?).try(:ip_address) %></strong>
+      </li>
+      <li>Ingrese con su PIN de <%= link_to 'colaborador', users_path %></li>
+    </ol>
+  </div>
+</div>

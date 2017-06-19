@@ -1,0 +1,41 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>No. placa</th>
+      <th>Area</th>
+      <th>Tipo</th>
+      <th>Accion</th>
+    </tr>
+  </thead>
+  <tbody class="list">
+    <% @revision.asset_revisions.each do |rev| %>
+      <% asset = rev.asset %>
+      <tr>
+        <td><%= asset.id %></td>
+        <td><%= link_to asset.plate_number? ? asset.plate_number : 'N/A', asset_path(asset) %></td>
+        <td><%= link_to asset.area.name, area_path(asset.area) %></td>
+        <td>
+          <span class="type label label-<%= asset.type.include?('Un') ? 'default' : 'info' %>">
+            <%= asset.type_to_h.capitalize %>
+          </span>
+        </td>
+        <td>
+          <% if @revision.open? %>
+            <%= link_to 'Eliminar', asset_revision_path(rev),
+                         method: :delete,
+                         data: { confirm: '¿Está seguro que desea borrar el activo de la revision?' } %>
+          <% else %>
+            <p>Revision cerrada</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @revision.asset_revisions.empty? %>
+  <p class="text-center">
+    No existen activos registrados para esta revision
+  </p>
+<% end %>

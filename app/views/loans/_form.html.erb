@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-xs-6">
+    <%= f.input :applicant_name, label: 'Nombre del solicitante' %>
+  </div>
+  <div class="col-xs-6">
+    <%= f.input :applicant_dni, label: 'Identificación del solicitante' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <%= f.input :phone_number, label: 'Teléfono' %>
+  </div>
+  <div class="col-xs-6">
+    <%= f.input :return_date, label: 'Fecha de devolución', start_year: Date.today.year,
+                end_year: Date.today.year + 1, order: [:day, :month, :year] %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <%= f.input :observations, label: 'Observaciones' %>
+  </div>
+</div>
+<%= f.submit 'Guardar', class: 'btn btn-primary' %>

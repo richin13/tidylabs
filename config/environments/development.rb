@@ -56,4 +56,6 @@ Rails.application.configure do
 
   # I have to confess that I find this really funny
   config.assets.prefix = '/assetz'
+
+  config.secret_key = '43=vDrDOw=r'
 end

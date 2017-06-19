@@ -22,7 +22,7 @@
   </ul>
   <div class="form-group">
     <label for="status-filter">Estado</label>
-    <select class="form-control" id="status-filter">
+    <select class="form-control selectpicker" id="status-filter">
       <option value="all">Todos</option>
       <% statuses = Asset.statuses.keys - %w(unassigned retired) %>
       <% statuses.each do |status| %>

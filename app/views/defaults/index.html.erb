@@ -1,2 +1,12 @@
-<h1>Defaults#index</h1>
-<p>Find me in app/views/defaults/index.html.erb</p>
+<div class="row">
+  <div class="page-header">
+    <h1>Sistema de gestión de activos</h1>
+  </div>
+  <div class="col-md-12">
+    <% @blocks.each do |block| %>
+      <div class="col-sm-4">
+        <%= render 'defaults/partials/cell', url: block[:url], name: block[:name], icon: block[:icon] %>
+      </div>
+    <% end %>
+  </div>
+</div>

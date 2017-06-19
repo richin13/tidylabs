@@ -1,17 +1,33 @@
 class AssetsController < ApplicationController
+  acts_as_token_authentication_handler_for User
+
   before_action :authenticate_user!
-  before_action :find_asset, :except => [:new, :create, :index]
+  before_action :find_asset, :except => [:new, :create, :index, :search]
+  skip_before_action :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
 
   def index
-    @assets = Asset.all
+    @assets = Asset.order(created_at: :desc).page(params[:page]).per 6
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def show
     @asset.build_details
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def new
     @asset = Asset.new
+    if params[:area].present?
+      @asset.area_id = params[:area]
+    end
   end
 
   def edit
@@ -21,20 +37,21 @@ class AssetsController < ApplicationController
     @asset = Asset.new(asset_params)
 
     if @asset.save
-      # Maybe generate qr here?
-      @asset.generate_id_code
       redirect_to asset_url(@asset), notice: 'Activo creado correctamente'
     else
-      puts @asset.errors.inspect
       render :new
     end
   end
 
   def update
-    if @asset.update(asset_params)
-      redirect_to asset_url(@asset), notice: 'Activo actualizado correctamente'
-    else
-      render :edit
+    respond_to do |format|
+      if @asset.update(asset_params)
+        format.html { redirect_to asset_url(@asset), notice: 'Activo actualizado correctamente' }
+        format.json { render :show }
+      else
+        format.html { render :edit }
+        format.json { render :show, status: :bad_request }
+      end
     end
   end
 
@@ -43,7 +60,16 @@ class AssetsController < ApplicationController
     redirect_to assets_path
   end
 
+  def search
+    @query = params[:q]
+    @assets = Asset.where('description LIKE :description or plate_number = :plate_number',
+                          {description: "%#{@query}%", plate_number: @query}).page(params[:page]).per 6
+
+    render :index
+  end
+
   private
+
   def find_asset
     @asset = Asset.find(params[:id])
   end
@@ -55,12 +81,17 @@ class AssetsController < ApplicationController
       params[:asset] = params.delete :unplated_asset
     end
 
-    params.require(:asset).permit(:type, :plate_number, :quantity, :description, :serial_number, :area_id, :photo,
-                                  :status, :has_warranty, :has_tech_details, :has_security_details, :has_network_details,
-                                  :asset_category_id,
-                                  :warranty_attributes => [:purchase_date, :month_period, :agent_name, :agent_phone],
-                                  :technical_detail_attributes => [:cpu, :ram, :hdd, :os, :other],
-                                  :security_detail_attributes => [:username, :password],
-                                  :network_detail_attributes => [:ip, :mask, :gateway, :dns])
+    asset_params = params.require(:asset).permit(:type, :plate_number, :quantity, :description, :serial_number, :area_id, :photo,
+                                                 :status, :has_warranty, :has_tech_details, :has_security_details, :has_network_details,
+                                                 :asset_category_id)
+
+    if request.format == 'application/json'
+      image = Paperclip.io_adapters.for(params[:photo])
+      image.original_filename = 'asset_image_from_mobile.png'
+      asset_params[:photo] = image
+    end
+
+    asset_params
   end
+
 end

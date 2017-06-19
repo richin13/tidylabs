@@ -1,0 +1,11 @@
+<% title "Editar categoría: #{@category.name.downcase}" %>
+<div class="row">
+  <div class="page-header">
+    <h1>Editar categoría</h1>
+  </div>
+  <div class="col-xs-12 col-sm-10 col-md-8 center-block">
+    <%= simple_form_for @category, url: category_url(@category.id) do |f| %>
+      <%= render 'categories/form', f: f %>
+    <% end %>
+  </div>
+</div>

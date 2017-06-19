@@ -1,0 +1,13 @@
+<% completeness = loan.finished ? %w(circle Finalizado) : ['circle-o', 'Sin finalizar'] %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="pull-right black a">
+      <%= link_to fa_icon('desktop'), asset_path(loan.asset_id), title: loan.asset.description %>
+      <i class="fa fa-<%= completeness[0] %>" title="<%= completeness[1] %>"></i>
+    </div>
+    <%= fa_icon('handshake-o') %>
+    <a href="<%= url_for asset_loan_url(loan.asset_id, loan.id) %>">
+      Préstamo a <%= loan.applicant_name %> el <%= loan.created_at.strftime('%e/%m/%Y a las %H:%M') %>
+    </a>
+  </div>
+</div>

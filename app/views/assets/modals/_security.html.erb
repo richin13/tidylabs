@@ -4,17 +4,17 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h3 class="modal-title">Detalles de seguridad</h3>
       </div>
       <%= simple_form_for @asset.security_detail, url: url do |f| %>
-          <div class="modal-body">
-            <%= render 'security_details/forms/fields', f: f %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <%= f.submit 'Guardar', class: 'btn btn-success' %>
-          </div>
+        <div class="modal-body">
+          <%= render 'security_details/forms/fields', f: f %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+        </div>
       <% end %>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</div>

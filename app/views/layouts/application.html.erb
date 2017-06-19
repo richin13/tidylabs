@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tydilabs</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Oficina de Cómputo - Recinto de Paraíso | <%= content_for?(:title) ? yield(:title) : 'Tidylabs' %></title>
+  <%= csrf_meta_tags %>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <%= favicon_link_tag 'favicon.png' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= favicon_link_tag 'favicon.png' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
 
-  </head>
+</head>
 
-  <body>
-    <% if user_signed_in? %>
-      <%= render 'layouts/common/navbar' %>
-    <% else %>
-      <%= render 'layouts/common/external_navbar' %>
-    <% end %>
-    <div class="container" id="main-container">
-      <%= render 'layouts/common/messages' %>
-      <div class="col-md-12">
-        <%= yield %>
-      </div>
-    </div>
-    <% if user_signed_in? %>
-      <%= render 'layouts/common/footer' %>
-    <% end %>
-  </body>
+<body>
+<% if user_signed_in? %>
+    <%= render 'layouts/common/navbar' %>
+<% else %>
+    <%= render 'layouts/common/external_navbar' %>
+<% end %>
+<%= render 'layouts/common/messages' %>
+<div class="container" id="main-container">
+  <div class="col-md-12">
+    <%= yield %>
+  </div>
+</div>
+<% if user_signed_in? %>
+    <%= render 'layouts/common/footer' %>
+<% end %>
+<%= javascript_include_tag 'application' %>
+</body>
 </html>

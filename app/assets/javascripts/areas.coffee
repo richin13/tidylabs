@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).ready ->
   options = valueNames: [
     'plate'
     'category'

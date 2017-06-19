@@ -1,0 +1,23 @@
+<% title "Area: #{@assets.first.area.name} | Cant. #{pluralize(@assets.count, 'codigo')}" %>
+
+<div class="row">
+  <% @assets.each do |asset| %>
+    <div class="col-sm-3 col-md-2 print-box">
+      <h5 class="text-center">OCP | UCR</h5>
+      <div class="id-code">
+        <%= code_as_svg(asset.identification_code) %>
+      </div>
+      <div class="cut-here-helper">
+        <% if asset.plate_number? %>
+          <p><strong><%= fa_icon "scissors fw" %> Placa: <%= asset.plate_number %></strong></p>
+        <% else %>
+          <p><strong><%= fa_icon "scissors fw" %> Sin placa: <%= asset.id %></strong></p>
+        <% end %>  
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  window.print()
+</script>

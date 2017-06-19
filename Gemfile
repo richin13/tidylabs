@@ -14,7 +14,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
-gem 'jquery-turbolinks'
 
 gem 'font-awesome-rails'
 gem 'rails-sweetalert2-confirm'
@@ -23,16 +22,18 @@ gem 'bower-rails', '~> 0.11.0'
 
 gem 'simple_form', '~> 3.4'
 gem 'paperclip'
+gem 'rqrcode'
+gem 'kaminari'
 
-gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'devise', '~> 4.2.1'
+gem 'simple_token_authentication', '~> 1.0'
+gem 'aescrypt'
 
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'factory_girl_rails'
-  gem 'faker'
 end
 
 group :development do

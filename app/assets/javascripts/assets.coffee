@@ -21,11 +21,14 @@ class AssetDisplayManager
   constructor: () ->
 
   initMomentJS: (selector) ->
+    selector = $(selector)
     date = selector.data('date')
-    selector.html(moment(date).fromNow())
+    if moment(date).isValid()
+      selector.html(moment(date).fromNow())
+    else
+      selector.html 'Nunca'
 
   registerModal: (trigger, _modal) ->
-    console.log(_modal)
     trigger.on 'click', (e) ->
       e.preventDefault()
       _modal.modal('show')
@@ -35,15 +38,22 @@ class AssetDisplayManager
       e.preventDefault()
       $(modal).modal('show')
 
+  renderIdCode: (svg, target)->
+    rawSvg = $(svg).text()
+    $(target).replaceWith(rawSvg)
 
-$(document).on 'turbolinks:load', () ->
+
+$(document).ready () ->
   $('.selectpicker').selectpicker() # Init bootstrap-select
 
   mgr = new AssetCreationManager()
   mgr.manageAssetType($ '#asset_type')
 
   displayMgr = new AssetDisplayManager()
-  displayMgr.initMomentJS $('.momentjs')
+  displayMgr.renderIdCode('#raw-svg', '#id-code')
+
+  for s in $('.momentjs')
+    displayMgr.initMomentJS s
 
   mappings = [
     ['#a-specs-create',   '#specs-modal-create'],
@@ -59,7 +69,3 @@ $(document).on 'turbolinks:load', () ->
 
   for m in mappings
     displayMgr.registerActions(m[0], m[1])
-
-
-  true
-

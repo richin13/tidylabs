@@ -1,59 +1,56 @@
-<%= simple_form_for @asset, url: assets_path do |f| %>
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <%= f.input :type, collection: Asset::TYPES.map { |k, v| [v, k] },
-                    label: 'Tipo de activo', include_blank: false, input_html: {id: 'asset_type', class: 'selectpicker'} %>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <%= f.input :type, collection: Asset::TYPES.map { |k, v| [v, k] },
+                label: 'Tipo de activo', include_blank: false, input_html: {id: 'asset_type', class: 'selectpicker'} %>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <div id="card">
+      <div class="side">
+        <%= f.input :plate_number, as: :string, label: 'Número de placa',
+                    wrapper_html: {class: 'asset_plate_number'} %>
       </div>
-      <div class="col-xs-12 col-sm-6">
-        <div id="card">
-          <div class="side">
-            <%= f.input :plate_number, as: :string, label: 'Número de placa',
-                        wrapper_html: {class: 'asset_plate_number'} %>
-          </div>
-          <div class="side">
-            <%= f.input :quantity, label: 'Cantidad', wrapper_html: {class: 'hidden asset_quantity'} %>
-          </div>
-        </div>
+      <div class="side">
+        <%= f.input :quantity, label: 'Cantidad', wrapper_html: {class: 'hidden asset_quantity'} %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <%= f.input :description, as: :string, label: 'Descripción del activo' %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <%= f.input :serial_number, as: :string, label: 'Número de serie' %>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <%= f.input :status, collection: Asset::STATUS.map { |k, v| [v, k] },
-                    label: 'Estado', selected: 4, input_html: {class: 'selectpicker'} %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <%= f.association :area, collection: Area.all, label: 'Área',
-                    input_html:
-                      {class: 'selectpicker', data: {live_search: true, header: 'Seleccione un área',
-                                                     none_selected_text: 'No ha seleccionado ninguna'}} %>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <%= f.input :photo, as: :file, label: 'Foto del activo' %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-6">
-        <%= f.association :asset_category, collection: AssetCategory.all, label: 'Categoría',
-                    input_html:
-                      {class: 'selectpicker',
-                       data: {live_search: true, header: 'Seleccione una categoría',
-                              none_selected_text: 'No ha seleccionado ninguna'}}%>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-xs-6">
-        <%= f.submit 'Guardar', class: 'btn btn-success' %>
-      </div>
-    </div>
-<% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <%= f.input :description, as: :string, label: 'Descripción del activo' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <%= f.input :serial_number, as: :string, label: 'Número de serie' %>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <%= f.input :status, collection: Asset::STATUS.map { |k, v| [v, k] },
+                label: 'Estado', selected: 4, input_html: {class: 'selectpicker'} %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <%= f.association :area, collection: Area.all, label: 'Área',
+                      input_html:
+                        {class: 'selectpicker', data: {live_search: true, header: 'Seleccione un área',
+                                                       none_selected_text: 'No ha seleccionado ninguna'}} %>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <%= f.input :photo, as: :file, label: 'Foto del activo' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <%= f.association :asset_category, collection: AssetCategory.all, label: 'Categoría',
+                      input_html:
+                        {class: 'selectpicker',
+                         data: {live_search: true, header: 'Seleccione una categoría',
+                                none_selected_text: 'No ha seleccionado ninguna'}} %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<% title 'Código de identificación' %>
+<div class="row">
+ <div class="page-header">
+  <h1>Código de identificación</h1>
+ </div>
+ <div class="col-md-12">
+   <div class="col-xs-4">
+    <div class="id-code">
+    <%= code_as_svg(@id_code) %>
+    </div>
+   </div>
+
+   <div class="col-md-8">
+    <div class="col-xs-12">
+      <h3>Detalles</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered actions">
+          <tr>
+            <td colspan="2">Tipo</td>
+            <td colspan="2" class="text-center"><%= @id_code.code_type %></td>
+          </tr>
+          <tr>
+            <td colspan="2">Datos codificados</td>
+            <td colspan="2" class="text-center"><code><%= @id_code.code %></code></td>
+          </tr>
+          <tr>
+            <td>Placa</td>
+            <td class="text-center"><%= @asset.plate_number || 'Sin placa' %></td>
+            <td>No.</td>
+            <td class="text-center"><%= @asset.id %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <%= simple_form_for :id_codes, url: print_asset_identification_code_path(@asset, @id_code) do |f| %>
+        <%= f.input :assets,
+              label: 'Seleccione uno o varios activos',
+              collection: @asset.area.assets,
+              label_method: lambda { |asset| asset.plate_number ? "Activo ##{asset.id} (#{asset.plate_number})" : "Activo sin placa ##{asset.id}" },
+              value_method: :id,
+              selected: @asset.id,
+              input_html: { multiple: true } %>
+
+        <%= f.button :submit, "Imprimir códigos", class: "btn-default btn-sm" %>
+      <% end %>
+    </div>
+   </div>
+ </div>
+</div>

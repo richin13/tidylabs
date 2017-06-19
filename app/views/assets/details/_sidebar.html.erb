@@ -1,7 +1,7 @@
 <div>
   <%= link_to @asset.category.name.capitalize, category_path(@asset.category) %> 
   <div class="text-center">
-    <%= image_tag @asset.photo.url(:thumb), class: "img-thumbnail asset-thumbnail" %>
+    <%= image_tag @asset.photo.url(:thumb), class: 'img-thumbnail asset-thumbnail' %>
   </div>
   <p class="text-center">
     <span class="label label-success">
@@ -12,15 +12,7 @@
 
 <div>
   <hr>
-  <p><strong>Codigo identificacion</strong></p>
-  <div class="text-center">
-    <%= image_tag 'barcode-place-holder', class: "img-thumbnail id-code-thumbnail" %>
-  </div>
-</div>
-
-<div>
-  <hr>
-  <p><strong>Informacion</strong></p>
+  <p><strong>Información</strong></p>
   <ul class="list-group asset-details">
     <li class="list-group-item">
       <span class="badge alert-<%= @asset.type.include?('Un') ? 'default' : 'info' %>">
@@ -45,7 +37,17 @@
 
 <div>
   <hr>
-  <p><strong>Ubicacion</strong></p>
+  <p><strong>Código identificación</strong></p>
+  <div class="text-center code">
+    <%= link_to(asset_identification_codes_path(@asset)) do %>
+      <%= code_as_svg(@asset.identification_code, 3) %>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <hr>
+  <p><strong>Ubicación</strong></p>
   <ul class="list-unstyled text-center">
     <li><strong><%= link_to @asset.area.name.capitalize, area_path(@asset.area) %></strong></li>
     <li><small class="text-muted"><%= link_to 'Reubicar', asset_relocations_path(@asset) %></small></li>
