@@ -9,7 +9,6 @@ class DefaultsController < ApplicationController
       { url: loans_path, name: 'Préstamos', icon: 'handshake-o' },
       { url: categories_path, name: 'Categorías', icon: 'folder-o' },
       { url: users_path, name: 'Colaboradores', icon: 'users' },
-      { url: root_path, name: 'Reportes', icon: 'file-pdf-o' },
       { url: app_path, name: 'Móvil', icon: 'android' },
       { url: help_path, name: 'Ayuda', icon: 'support' },
     ]
