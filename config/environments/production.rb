@@ -82,6 +82,6 @@ Rails.application.configure do
 
   config.assets.prefix = '/assetz'
 
-  config.secret_key = ''
+  config.secret_key = ENV['SECRET_KEY']
 
 end
