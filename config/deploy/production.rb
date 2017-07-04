@@ -30,7 +30,7 @@
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-
+set :default_env, { 'DEVISE_SECRET_KEY' => ENV['SECRET_KEY'] }
 
 
 # Custom SSH Options

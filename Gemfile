@@ -45,7 +45,11 @@ group :development do
   gem 'capistrano-rvm',     require: false
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano-puma',   require: false
+  gem 'capistrano3-puma',   require: false
+end
+
+group :production do
+  gem 'mysql2', '~> 0.4.7'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
